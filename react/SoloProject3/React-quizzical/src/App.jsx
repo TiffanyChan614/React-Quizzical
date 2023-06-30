@@ -1,5 +1,7 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import StartPage from './components/StartPage'
+import QuizPage from './components/QuizPage'
+
 import yellowblob0 from './assets/yellowblob0.svg'
 import yellowblob1 from './assets/yellowblob1.svg'
 import yellowblob2 from './assets/yellowblob2.svg'
@@ -13,6 +15,27 @@ const START_PAGE = 0,
 
 function App() {
 	const [currentPage, setCurrentPage] = useState(START_PAGE)
+	const [questionsData, setQuestionsData] = useState(null)
+
+	const apiUrl = 'https://opentdb.com/api.php?amount=5'
+
+	useEffect(() => {
+		fetch(apiUrl)
+			.then((res) => res.json())
+			.then((data) => {
+				setQuestionsData(
+					data.results.map((question) => {
+						return {
+							question: question.question,
+							correctAnswer: question.correct_answer,
+							incorrectAnswers: question.incorrect_answers,
+						}
+					})
+				)
+			})
+	}, [])
+
+	console.log('questionsData', questionsData)
 
 	function handleClick() {
 		setCurrentPage((oldPage) => (oldPage + 1) % 3)
@@ -36,6 +59,7 @@ function App() {
 				alt='Blue blob'
 			/>
 			{currentPage === START_PAGE && <StartPage handleClick={handleClick} />}
+			{currentPage === QUIZ_PAGE && <QuizPage questionsData={questionsData} />}
 		</main>
 	)
 }
