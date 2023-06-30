@@ -1,0 +1,21 @@
+body {
+	background-color: #f5f7fb;
+	margin: 0;
+}
+
+main {
+	width: 100vw;
+	height: 100vh;
+}
+
+.yellow-blob {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.blue-blob {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
