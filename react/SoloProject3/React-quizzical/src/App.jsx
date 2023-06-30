@@ -8,7 +8,11 @@ const START_PAGE = 0,
 function App() {
 	const [currentPage, setCurrentPage] = useState(START_PAGE)
 
-	console.log(`../asset/yellowblob${currentPage}.svg`)
+	function handleClick() {
+		setCurrentPage((oldPage) => (oldPage + 1) % 3)
+	}
+
+	console.log('currentPage', currentPage)
 
 	return (
 		<main>
@@ -22,7 +26,7 @@ function App() {
 				src={`../asset/blueblob${currentPage}.svg`}
 				alt='Blue blob'
 			/>
-			<StartPage />
+			{currentPage === START_PAGE && <StartPage handleClick={handleClick} />}
 		</main>
 	)
 }
