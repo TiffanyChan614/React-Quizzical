@@ -24,13 +24,11 @@ function App() {
 			.then((res) => res.json())
 			.then((data) => {
 				setQuestionsData(
-					data.results.map((question) => {
-						return {
-							question: question.question,
-							correctAnswer: question.correct_answer,
-							incorrectAnswers: question.incorrect_answers,
-						}
-					})
+					data.results.map((question) => ({
+						question: question.question,
+						correctAnswer: question.correct_answer,
+						incorrectAnswers: question.incorrect_answers,
+					}))
 				)
 			})
 	}, [])
