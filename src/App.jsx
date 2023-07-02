@@ -49,7 +49,7 @@ function App() {
 		)
 	}
 
-	console.log(selectedAnswers)
+	console.log('selected answers', selectedAnswers)
 
 	console.log('currentPage', currentPage)
 
@@ -75,6 +75,7 @@ function App() {
 				<QuizPage
 					questionsData={questionsData}
 					handleAnswerClick={handleAnswerClick}
+					selectedAnswers={selectedAnswers}
 				/>
 			)}
 		</main>

@@ -1,8 +1,15 @@
 import he from 'he'
 import { useState, useEffect } from 'react'
 
-export default function Question({ quizQuestion, handleAnswerClick, id }) {
+export default function Question({
+	quizQuestion,
+	handleAnswerClick,
+	id,
+	selectedAnswers,
+}) {
 	const [answers, setAnswers] = useState([])
+
+	console.log(selectedAnswers)
 
 	useEffect(() => {
 		setAnswers(
@@ -33,7 +40,9 @@ export default function Question({ quizQuestion, handleAnswerClick, id }) {
 			<div className='answers'>
 				{answers.map((ans) => (
 					<button
-						className='ans-btn'
+						className={`ans-btn ${
+							selectedAnswers[id] === ans ? 'selected' : ''
+						}`}
 						key={ans}
 						onClick={() => handleAnswerClick(id, ans)}>
 						{he.decode(ans)}
