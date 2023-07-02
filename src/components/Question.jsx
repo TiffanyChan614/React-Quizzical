@@ -1,7 +1,7 @@
 import he from 'he'
 
-export default function Question({ question }) {
-	if (!question) {
+export default function Question({ quizQuestion }) {
+	if (!quizQuestion) {
 		return null
 	}
 
@@ -17,19 +17,21 @@ export default function Question({ question }) {
 	}
 
 	const answers = shuffleArray(
-		question.incorrectAnswers.concat(question.correctAnswer)
+		quizQuestion.incorrectAnswers.concat(quizQuestion.correctAnswer)
 	)
 
 	return (
-		<div className='question'>
-			<h2>{he.decode(question.question)}</h2>
-			{answers.map((ans) => (
-				<button
-					className='ans-btn'
-					key={ans}>
-					{ans}
-				</button>
-			))}
+		<div className='quiz-question'>
+			<h2 className='question'>{he.decode(quizQuestion.question)}</h2>
+			<div className='answers'>
+				{answers.map((ans) => (
+					<button
+						className='ans-btn'
+						key={ans}>
+						{ans}
+					</button>
+				))}
+			</div>
 		</div>
 	)
 }

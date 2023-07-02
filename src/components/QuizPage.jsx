@@ -4,13 +4,14 @@ import Question from './Question'
 export default function QuizPage({ questionsData }) {
 	console.log('quiz page runs')
 	return (
-		<div>
-			{questionsData.map((question) => (
+		<div className='content'>
+			{questionsData.map((quizQuestion) => (
 				<Question
-					question={question}
-					key={question.question}
+					quizQuestion={quizQuestion}
+					key={quizQuestion.question}
 				/>
 			))}
+			<button className='check-btn'>Check answers</button>
 		</div>
 	)
 }

@@ -8,6 +8,7 @@ body {
 	background-color: #f5f7fb;
 	margin: 0;
 	font-family: 'inter', sans-serif;
+	color: #293264;
 }
 
 main {
@@ -33,17 +34,16 @@ main {
 .content {
 	display: flex;
 	flex-direction: column;
-	flex-shrink: 0;
 	gap: 10px;
 	align-items: center;
 }
 
 .start.content {
 	text-align: center;
-	color: #293264;
 }
 
-.start.content h1 {
+h1,
+h2 {
 	font-family: 'karla', sans-serif;
 }
 
@@ -58,6 +58,53 @@ main {
 	font-size: 1rem;
 }
 
-.start-btn:active {
-	box-shadow: inset 3px 3px 5px 5px rgba(0, 0, 0, 0.2);
+.start-btn:active,
+.check-btn:active {
+	box-shadow: inset 3px 3px 5px 5px rgba(0, 0, 0, 0.15);
+}
+
+.quiz-question {
+	width: 90%;
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	border-bottom: 1px solid #dbdef0;
+	padding-bottom: 15px;
+}
+
+.question {
+	text-align: left;
+	font-size: 1rem;
+}
+
+.answers {
+	display: flex;
+	gap: 15px;
+}
+
+.ans-btn {
+	padding: 4px 12px;
+	min-width: 60px;
+	color: #293264;
+	border: 1px solid #4d5b9e;
+	border-radius: 8px;
+	font-size: 0.8rem;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+.ans-btn.selected {
+	background-color: #d6dbf5;
+	border: 0;
+}
+
+.check-btn {
+	background-color: #4d5b9e;
+	border-radius: 15px;
+	padding: 12px 20px;
+	border: none;
+	color: white;
+	margin-top: 15px;
+	font-size: 0.8rem;
+	border-radius: 8px;
 }
