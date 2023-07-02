@@ -1,6 +1,17 @@
 import he from 'he'
+import { useState, useEffect } from 'react'
 
-export default function Question({ quizQuestion }) {
+export default function Question({ quizQuestion, handleAnswerClick, id }) {
+	const [answers, setAnswers] = useState([])
+
+	useEffect(() => {
+		setAnswers(
+			shuffleArray(
+				quizQuestion.incorrectAnswers.concat(quizQuestion.correctAnswer)
+			)
+		)
+	}, [])
+
 	if (!quizQuestion) {
 		return null
 	}
@@ -16,10 +27,6 @@ export default function Question({ quizQuestion }) {
 		return shuffledArray
 	}
 
-	const answers = shuffleArray(
-		quizQuestion.incorrectAnswers.concat(quizQuestion.correctAnswer)
-	)
-
 	return (
 		<div className='quiz-question'>
 			<h2 className='question'>{he.decode(quizQuestion.question)}</h2>
@@ -27,8 +34,9 @@ export default function Question({ quizQuestion }) {
 				{answers.map((ans) => (
 					<button
 						className='ans-btn'
-						key={ans}>
-						{ans}
+						key={ans}
+						onClick={() => handleAnswerClick(id, ans)}>
+						{he.decode(ans)}
 					</button>
 				))}
 			</div>

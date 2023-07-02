@@ -16,6 +16,7 @@ const START_PAGE = 0,
 function App() {
 	const [currentPage, setCurrentPage] = useState(START_PAGE)
 	const [questionsData, setQuestionsData] = useState(null)
+	const [selectedAnswers, setSelectedAnswers] = useState(['', '', '', '', ''])
 
 	const apiUrl = 'https://opentdb.com/api.php?amount=5'
 
@@ -24,7 +25,8 @@ function App() {
 			.then((res) => res.json())
 			.then((data) => {
 				setQuestionsData(
-					data.results.map((question) => ({
+					data.results.map((question, index) => ({
+						id: index,
 						question: question.question,
 						correctAnswer: question.correct_answer,
 						incorrectAnswers: question.incorrect_answers,
@@ -35,9 +37,19 @@ function App() {
 
 	console.log('questionsData', questionsData)
 
-	function handleClick() {
+	function handleStartClick() {
 		setCurrentPage((oldPage) => (oldPage + 1) % 3)
 	}
+
+	function handleAnswerClick(questionId, ans) {
+		setSelectedAnswers(
+			selectedAnswers.map((selectedAns, index) => {
+				return index === questionId ? ans : selectedAns
+			})
+		)
+	}
+
+	console.log(selectedAnswers)
 
 	console.log('currentPage', currentPage)
 
@@ -56,8 +68,15 @@ function App() {
 				src={blueBlobs[currentPage]}
 				alt='Blue blob'
 			/>
-			{currentPage === START_PAGE && <StartPage handleClick={handleClick} />}
-			{currentPage === QUIZ_PAGE && <QuizPage questionsData={questionsData} />}
+			{currentPage === START_PAGE && (
+				<StartPage handleClick={handleStartClick} />
+			)}
+			{currentPage === QUIZ_PAGE && (
+				<QuizPage
+					questionsData={questionsData}
+					handleAnswerClick={handleAnswerClick}
+				/>
+			)}
 		</main>
 	)
 }
