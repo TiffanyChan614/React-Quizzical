@@ -6,6 +6,7 @@ export default function QuizPage({
 	questionsData,
 	handleAnswerClick,
 	displayedAnsData,
+	handleCheckAnswersClick,
 }) {
 	if (!questionsData) {
 		return null
@@ -26,7 +27,11 @@ export default function QuizPage({
 					}
 				/>
 			))}
-			<button className='check-btn'>Check answers</button>
+			<button
+				className='check-btn'
+				onClick={handleCheckAnswersClick}>
+				Check answers
+			</button>
 		</div>
 	)
 }

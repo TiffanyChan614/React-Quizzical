@@ -17,6 +17,7 @@ function App() {
 	const [currentPage, setCurrentPage] = useState(START_PAGE)
 	const [questionsData, setQuestionsData] = useState(null)
 	const [displayedAnsData, setDisplayedAnsData] = useState(null)
+	const [score, setScore] = useState(0)
 
 	const apiUrl = 'https://opentdb.com/api.php?amount=5'
 
@@ -87,13 +88,21 @@ function App() {
 		)
 	}
 
-	// function handleCheckAnswersClick() {
-	// 	if (selectedAnswers.length !== 5) {
-	// 		alert('Please answer all questions')
-	// 		return
-	// 	}
-	// 	setCurrentPage((oldPage) => (oldPage + 1) % 3)
-	// }
+	function handleCheckAnswersClick() {
+		let newScore = 0
+		displayedAnsData.forEach((ansData) => {
+			console.log('ansData', ansData)
+			ansData.forEach((ans) => {
+				if (ans.selected && ans.correct) {
+					newScore++
+				}
+			})
+		})
+		console.log('newScore', newScore)
+		alert('Your score is ' + newScore + '/5')
+		setScore(newScore)
+		setCurrentPage((oldPage) => (oldPage + 1) % 3)
+	}
 
 	console.log('currentPage', currentPage)
 
@@ -120,6 +129,7 @@ function App() {
 					questionsData={questionsData}
 					handleAnswerClick={handleAnswerClick}
 					displayedAnsData={displayedAnsData}
+					handleCheckAnswersClick={handleCheckAnswersClick}
 				/>
 			)}
 		</main>
