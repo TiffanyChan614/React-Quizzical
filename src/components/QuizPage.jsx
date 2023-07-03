@@ -1,21 +1,29 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react'
 import Question from './Question'
 
 export default function QuizPage({
 	questionsData,
 	handleAnswerClick,
-	selectedAnswers,
+	displayedAnsData,
 }) {
-	console.log('selected answers in quiz page', selectedAnswers)
+	if (!questionsData) {
+		return null
+	}
+
+	// console.log('rendering QuizPage')
+
 	return (
 		<div className='content'>
-			{questionsData.map((quizQuestion) => (
+			{questionsData.map((quizQuestion, index) => (
 				<Question
 					quizQuestion={quizQuestion}
 					key={quizQuestion.id}
-					id={quizQuestion.id}
+					questionId={quizQuestion.id}
 					handleAnswerClick={handleAnswerClick}
-					selectedAnswers={selectedAnswers}
+					displayedAns={
+						displayedAnsData[index] ? displayedAnsData[index] : null
+					}
 				/>
 			))}
 			<button className='check-btn'>Check answers</button>

@@ -4,48 +4,24 @@ import { useState, useEffect } from 'react'
 export default function Question({
 	quizQuestion,
 	handleAnswerClick,
-	id,
-	selectedAnswers,
+	questionId,
+	displayedAns,
 }) {
-	const [answers, setAnswers] = useState([])
-
-	console.log(selectedAnswers)
-
-	useEffect(() => {
-		setAnswers(
-			shuffleArray(
-				quizQuestion.incorrectAnswers.concat(quizQuestion.correctAnswer)
-			)
-		)
-	}, [])
-
-	if (!quizQuestion) {
+	// console.log('rendering Question')
+	if (!quizQuestion || !displayedAns) {
 		return null
-	}
-
-	function shuffleArray(array) {
-		const shuffledArray = [...array]
-		for (let i = shuffledArray.length - 1; i > 0; i--) {
-			const j = Math.floor(Math.random() * (i + 1))
-			const temp = shuffledArray[i]
-			shuffledArray[i] = shuffledArray[j]
-			shuffledArray[j] = temp
-		}
-		return shuffledArray
 	}
 
 	return (
 		<div className='quiz-question'>
 			<h2 className='question'>{he.decode(quizQuestion.question)}</h2>
 			<div className='answers'>
-				{answers.map((ans) => (
+				{displayedAns.map((ans) => (
 					<button
-						className={`ans-btn ${
-							selectedAnswers[id] === ans ? 'selected' : ''
-						}`}
-						key={ans}
-						onClick={() => handleAnswerClick(id, ans)}>
-						{he.decode(ans)}
+						className={`ans-btn ${ans.selected ? 'selected' : ''}`}
+						key={ans.id}
+						onClick={() => handleAnswerClick(questionId, ans.id)}>
+						{he.decode(ans.answer)}
 					</button>
 				))}
 			</div>

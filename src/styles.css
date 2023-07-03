@@ -80,6 +80,7 @@ h2 {
 .answers {
 	display: flex;
 	gap: 15px;
+	flex-wrap: wrap;
 }
 
 .ans-btn {

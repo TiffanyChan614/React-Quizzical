@@ -16,7 +16,7 @@ const START_PAGE = 0,
 function App() {
 	const [currentPage, setCurrentPage] = useState(START_PAGE)
 	const [questionsData, setQuestionsData] = useState(null)
-	const [selectedAnswers, setSelectedAnswers] = useState(['', '', '', '', ''])
+	const [displayedAnsData, setDisplayedAnsData] = useState(null)
 
 	const apiUrl = 'https://opentdb.com/api.php?amount=5'
 
@@ -35,21 +35,65 @@ function App() {
 			})
 	}, [])
 
+	function shuffleArray(array) {
+		const shuffledArray = [...array]
+		for (let i = shuffledArray.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1))
+			const temp = shuffledArray[i]
+			shuffledArray[i] = shuffledArray[j]
+			shuffledArray[j] = temp
+		}
+		return shuffledArray
+	}
+
+	useEffect(() => {
+		if (questionsData) {
+			setDisplayedAnsData(
+				questionsData.map((question) => {
+					const allAns = question.incorrectAnswers.concat(
+						question.correctAnswer
+					)
+					const ansData = allAns.map((ans, ansId) => ({
+						id: ansId,
+						answer: ans,
+						correct: ans === question.correctAnswer,
+						selected: false,
+					}))
+					return shuffleArray(ansData)
+				})
+			)
+		}
+	}, [questionsData])
+
 	console.log('questionsData', questionsData)
+	console.log('displayedAnsData', displayedAnsData)
 
 	function handleStartClick() {
 		setCurrentPage((oldPage) => (oldPage + 1) % 3)
 	}
 
-	function handleAnswerClick(questionId, ans) {
-		setSelectedAnswers(
-			selectedAnswers.map((selectedAns, index) => {
-				return index === questionId ? ans : selectedAns
-			})
+	function handleAnswerClick(questionId, ansId) {
+		console.log('handleAnswerClick')
+		setDisplayedAnsData((oldAns) =>
+			oldAns.map((ansData, index) =>
+				index === questionId
+					? ansData.map((ans) =>
+							ans.id === ansId
+								? { ...ans, selected: true }
+								: { ...ans, selected: false }
+					  )
+					: ansData
+			)
 		)
 	}
 
-	console.log('selected answers', selectedAnswers)
+	// function handleCheckAnswersClick() {
+	// 	if (selectedAnswers.length !== 5) {
+	// 		alert('Please answer all questions')
+	// 		return
+	// 	}
+	// 	setCurrentPage((oldPage) => (oldPage + 1) % 3)
+	// }
 
 	console.log('currentPage', currentPage)
 
@@ -75,7 +119,7 @@ function App() {
 				<QuizPage
 					questionsData={questionsData}
 					handleAnswerClick={handleAnswerClick}
-					selectedAnswers={selectedAnswers}
+					displayedAnsData={displayedAnsData}
 				/>
 			)}
 		</main>
