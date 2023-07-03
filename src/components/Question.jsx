@@ -14,8 +14,10 @@ export default function Question({
 
 	return (
 		<div className='quiz-question'>
-			<h2 className='question'>{he.decode(quizQuestion.question)}</h2>
-			<div className='answers'>
+			<h2 className='quiz-question--question'>
+				{he.decode(quizQuestion.question)}
+			</h2>
+			<div className='quiz-question--answers'>
 				{displayedAns.map((ans) => (
 					<button
 						className={`ans-btn ${isActive && ans.selected ? 'selected' : ''} ${

@@ -11,8 +11,8 @@ export default function AnsPage({
 	}
 
 	return (
-		<div className='content'>
-			<div className='answers'>
+		<div className='ans content'>
+			<div className='ans--questions'>
 				{questionsData.map((quizQuestion, index) => (
 					<Question
 						quizQuestion={quizQuestion}
@@ -26,8 +26,8 @@ export default function AnsPage({
 					/>
 				))}
 			</div>
-			<div className='result'>
-				<p>You scored {score}/5 correct answers</p>
+			<div className='ans--buttons'>
+				<p className='score'>You scored {score}/5 correct answers</p>
 				<button
 					className='play-again-btn'
 					onClick={handlePlayAgainClick}>
