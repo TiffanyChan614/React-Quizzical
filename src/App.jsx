@@ -90,15 +90,25 @@ function App() {
 
 	function handleCheckAnswersClick() {
 		let newScore = 0
+		let allAnswered = true
 		displayedAnsData.forEach((ansData) => {
-			console.log('ansData', ansData)
+			let answered = false
 			ansData.forEach((ans) => {
+				if (ans.selected) {
+					answered = true
+				}
 				if (ans.selected && ans.correct) {
 					newScore++
 				}
 			})
+			if (!answered) {
+				allAnswered = false
+			}
 		})
-		console.log('newScore', newScore)
+		if (!allAnswered) {
+			alert('Please answer all questions')
+			return
+		}
 		alert('Your score is ' + newScore + '/5')
 		setScore(newScore)
 		setCurrentPage((oldPage) => (oldPage + 1) % 3)
