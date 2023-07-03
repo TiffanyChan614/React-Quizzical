@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import StartPage from './components/StartPage'
 import QuizPage from './components/QuizPage'
+import AnsPage from './components/AnsPage'
 
 import yellowblob0 from './assets/yellowblob0.svg'
 import yellowblob1 from './assets/yellowblob1.svg'
@@ -21,7 +22,7 @@ function App() {
 
 	const apiUrl = 'https://opentdb.com/api.php?amount=5'
 
-	useEffect(() => {
+	function fetchQuestions() {
 		fetch(apiUrl)
 			.then((res) => res.json())
 			.then((data) => {
@@ -34,6 +35,10 @@ function App() {
 					}))
 				)
 			})
+	}
+
+	useEffect(() => {
+		fetchQuestions()
 	}, [])
 
 	function shuffleArray(array) {
@@ -109,9 +114,16 @@ function App() {
 			alert('Please answer all questions')
 			return
 		}
-		alert('Your score is ' + newScore + '/5')
 		setScore(newScore)
 		setCurrentPage((oldPage) => (oldPage + 1) % 3)
+	}
+
+	function handlePlayAgainClick() {
+		setCurrentPage((oldPage) => (oldPage + 1) % 3)
+		setQuestionsData(null)
+		setDisplayedAnsData(null)
+		setScore(0)
+		fetchQuestions()
 	}
 
 	console.log('currentPage', currentPage)
@@ -140,6 +152,14 @@ function App() {
 					handleAnswerClick={handleAnswerClick}
 					displayedAnsData={displayedAnsData}
 					handleCheckAnswersClick={handleCheckAnswersClick}
+				/>
+			)}
+			{currentPage === ANS_PAGE && (
+				<AnsPage
+					questionsData={questionsData}
+					displayedAnsData={displayedAnsData}
+					score={score}
+					handlePlayAgainClick={handlePlayAgainClick}
 				/>
 			)}
 		</main>

@@ -37,6 +37,7 @@ main {
 	flex-direction: column;
 	gap: 10px;
 	align-items: center;
+	justify-content: center;
 	z-index: 1;
 }
 
@@ -110,4 +111,19 @@ h2 {
 	margin-top: 15px;
 	font-size: 0.8rem;
 	border-radius: 8px;
+}
+
+.ans-btn:disabled:not(.correct) {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+.ans-btn.correct {
+	background: #94d7a2;
+	border: none;
+}
+
+.ans-btn.incorrect {
+	background: #f8bcbc;
+	border: none;
 }

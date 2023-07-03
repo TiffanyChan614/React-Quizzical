@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import { useState, useEffect } from 'react'
 import Question from './Question'
 
 export default function QuizPage({
@@ -25,6 +24,7 @@ export default function QuizPage({
 					displayedAns={
 						displayedAnsData[index] ? displayedAnsData[index] : null
 					}
+					isActive={true}
 				/>
 			))}
 			<button

@@ -1,11 +1,11 @@
 import he from 'he'
-import { useState, useEffect } from 'react'
 
 export default function Question({
 	quizQuestion,
 	handleAnswerClick,
 	questionId,
 	displayedAns,
+	isActive,
 }) {
 	// console.log('rendering Question')
 	if (!quizQuestion || !displayedAns) {
@@ -18,9 +18,12 @@ export default function Question({
 			<div className='answers'>
 				{displayedAns.map((ans) => (
 					<button
-						className={`ans-btn ${ans.selected ? 'selected' : ''}`}
+						className={`ans-btn ${isActive && ans.selected ? 'selected' : ''} ${
+							!isActive && ans.correct ? 'correct' : ''
+						} ${!isActive && ans.selected && !ans.correct ? 'incorrect' : ''}`}
 						key={ans.id}
-						onClick={() => handleAnswerClick(questionId, ans.id)}>
+						onClick={() => handleAnswerClick(questionId, ans.id)}
+						disabled={!isActive}>
 						{he.decode(ans.answer)}
 					</button>
 				))}
