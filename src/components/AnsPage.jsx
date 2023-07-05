@@ -27,7 +27,9 @@ export default function AnsPage({
 				))}
 			</div>
 			<div className='ans--buttons'>
-				<p className='score'>You scored {score}/5 correct answers</p>
+				<p className='score'>
+					You scored {score}/{questionsData.length} correct answers
+				</p>
 				<button
 					className='play-again-btn'
 					onClick={handlePlayAgainClick}>

@@ -16,14 +16,15 @@ const START_PAGE = 0,
 
 function App() {
 	const [currentPage, setCurrentPage] = useState(START_PAGE)
-	const [questionsData, setQuestionsData] = useState(null)
-	const [displayedAnsData, setDisplayedAnsData] = useState(null)
+	const [questionsData, setQuestionsData] = useState([])
+	const [displayedAnsData, setDisplayedAnsData] = useState([])
 	const [score, setScore] = useState(0)
+	const [formData, setFormData] = useState({ 'num-questions': 0 })
 
-	const apiUrl = 'https://opentdb.com/api.php?amount=5'
+	const apiUrl = 'https://opentdb.com/api.php?amount='
 
 	function fetchQuestions() {
-		fetch(apiUrl)
+		fetch(`${apiUrl}${formData['num-questions']}`)
 			.then((res) => res.json())
 			.then((data) => {
 				setQuestionsData(
@@ -37,9 +38,8 @@ function App() {
 			})
 	}
 
-	useEffect(() => {
-		fetchQuestions()
-	}, [])
+	console.log('question data', questionsData)
+	console.log('displayed ans data', displayedAnsData)
 
 	function shuffleArray(array) {
 		const shuffledArray = [...array]
@@ -53,6 +53,7 @@ function App() {
 	}
 
 	useEffect(() => {
+		console.log('Setting displayed ans data')
 		if (questionsData) {
 			setDisplayedAnsData(
 				questionsData.map((question) => {
@@ -71,11 +72,26 @@ function App() {
 		}
 	}, [questionsData])
 
-	console.log('questionsData', questionsData)
-	console.log('displayedAnsData', displayedAnsData)
+	function handleChange(event) {
+		const { name, value } = event.target
+		setFormData((prevFormData) => {
+			return {
+				...prevFormData,
+				[name]: value,
+			}
+		})
+	}
 
-	function handleStartClick() {
-		setCurrentPage((oldPage) => (oldPage + 1) % 3)
+	console.log(JSON.stringify(formData))
+
+	function handleStartSubmit(event) {
+		event.preventDefault()
+		if (formData['num-questions'] < 1 || formData['num-questions'] > 50) {
+			alert('Please enter a number between 1 and 50')
+		} else {
+			setCurrentPage((oldPage) => (oldPage + 1) % 3)
+			fetchQuestions()
+		}
 	}
 
 	function handleAnswerClick(questionId, ansId) {
@@ -126,8 +142,6 @@ function App() {
 		fetchQuestions()
 	}
 
-	console.log('currentPage', currentPage)
-
 	const yellowBlobs = [yellowblob0, yellowblob1, yellowblob2]
 	const blueBlobs = [blueblob0, blueblob1, blueblob2]
 
@@ -144,7 +158,10 @@ function App() {
 				alt='Blue blob'
 			/>
 			{currentPage === START_PAGE && (
-				<StartPage handleClick={handleStartClick} />
+				<StartPage
+					handleSubmit={handleStartSubmit}
+					handleChange={handleChange}
+				/>
 			)}
 			{currentPage === QUIZ_PAGE && (
 				<QuizPage

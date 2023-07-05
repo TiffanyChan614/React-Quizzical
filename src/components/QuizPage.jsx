@@ -11,8 +11,6 @@ export default function QuizPage({
 		return null
 	}
 
-	// console.log('rendering QuizPage')
-
 	return (
 		<div className='quiz content'>
 			<div className='quiz--questions'>
