@@ -17,7 +17,7 @@ You can try the page [here](https://quizzical987.netlify.app).
 
 ## Requirements
 
-- Two screens: a start page and a quiz page (I make it three with an answer page. Reason for this see: [Why Three Page?](#why-three-pages))
+- Two screens: a start page and a quiz page
 - Pull 5 questions from the OTDB API
 - Tally correct answers after 'Check answers' is clicked
 - Styled and polished
@@ -53,11 +53,3 @@ You can try the page [here](https://quizzical987.netlify.app).
 - Allow the user to choose the number of questions they want to answer
 - Allow the user to choose the difficulty of the questions
 - Allow the user to choose the category of the questions
-
-## Why Three Pages?
-
-1. **Scalability:** Having three separate pages provides a scalable structure for future expansion. If I want to add more features or additional screens to the application, it can be easily accomplished by adding new components and routes without making the existing code overly complex.
-
-2. **Code Organization:** The separation of concerns between the start page, quiz page, and answer page promotes better code organization and maintainability. Each page has its specific functionality and components, making it easier to understand and modify in the future.
-
-3. **Clearer Logic Flow:** By navigating through different pages, the logic flow of the quiz becomes clearer to the user. They start with the start page, move on to the quiz page to answer the questions, and finally see the answer page with the correct answers and their score. This flow enhances the user experience and makes the quiz-taking process more intuitive.
