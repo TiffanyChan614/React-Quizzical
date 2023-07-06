@@ -54,3 +54,4 @@ You can try the page [here](https://quizzical987.netlify.app).
 - ~~Allow the user to choose the difficulty of the questions~~
 - ~~Allow the user to choose the category of the questions~~
 - ~~Allow the user to choose the category of the questions~~
+- ~~Add a back button to the quiz page to allow the user to go back to the start page~~
