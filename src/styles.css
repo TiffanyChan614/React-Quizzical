@@ -23,6 +23,7 @@ main {
 
 button {
 	cursor: pointer;
+	border: none;
 }
 
 .yellow-blob {
@@ -61,17 +62,14 @@ h2 {
 	border-radius: 15px;
 	padding: 16px 30px;
 	width: 200px;
-	border: none;
 	color: white;
 	margin-top: 15px;
 	font-size: 1rem;
 	align-self: center;
 }
 
-.start-btn:active,
-.check-btn:active,
-.play-again-btn:active {
-	box-shadow: inset 3px 3px 5px 5px rgba(0, 0, 0, 0.15);
+button:active:not(.back-btn) {
+	box-shadow: inset 3px 3px 5px 5px rgba(0, 0, 0, 0.12);
 }
 
 .quiz-question {
@@ -108,14 +106,32 @@ h2 {
 	border: 0;
 }
 
-.check-btn {
-	background-color: #4d5b9e;
+.quiz--buttons {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 20px;
+}
+
+.quiz--buttons > button {
 	border-radius: 15px;
 	padding: 12px 20px;
-	border: none;
-	color: white;
 	font-size: 0.8rem;
 	border-radius: 8px;
+}
+
+.check-btn {
+	background-color: #4d5b9e;
+	color: white;
+}
+
+.back-btn {
+	background-color: #d1d3dc;
+	color: #293264;
+}
+
+.back-btn:active {
+	box-shadow: inset 3px 3px 5px 5px rgba(0, 0, 0, 0.05);
 }
 
 .ans-btn:disabled:not(.correct) {
@@ -170,7 +186,6 @@ h2 {
 	background-color: #4d5b9e;
 	border-radius: 15px;
 	padding: 10px 25px;
-	border: none;
 	color: white;
 	font-size: 0.8rem;
 	border-radius: 8px;

@@ -27,7 +27,6 @@ function App() {
 	})
 
 	const apiUrl = `https://opentdb.com/api.php?amount=${formData['num-questions']}&category=${formData.category}&difficulty=${formData.difficulty}&type=${formData.type}`
-	console.log('api url', apiUrl)
 
 	function fetchQuestions() {
 		fetch(apiUrl)
@@ -44,9 +43,6 @@ function App() {
 			})
 	}
 
-	console.log('question data', questionsData)
-	console.log('displayed ans data', displayedAnsData)
-
 	function shuffleArray(array) {
 		const shuffledArray = [...array]
 		for (let i = shuffledArray.length - 1; i > 0; i--) {
@@ -59,7 +55,6 @@ function App() {
 	}
 
 	useEffect(() => {
-		console.log('Setting displayed ans data')
 		if (questionsData) {
 			setDisplayedAnsData(
 				questionsData.map((question) => {
@@ -80,7 +75,6 @@ function App() {
 
 	function handleChange(event) {
 		const { name, value } = event.target
-		console.log('name', name, ':', value)
 		setFormData((prevFormData) => {
 			return {
 				...prevFormData,
@@ -88,8 +82,6 @@ function App() {
 			}
 		})
 	}
-
-	console.log(JSON.stringify(formData))
 
 	function handleStartSubmit(event) {
 		event.preventDefault()
@@ -102,7 +94,6 @@ function App() {
 	}
 
 	function handleAnswerClick(questionId, ansId) {
-		console.log('handleAnswerClick')
 		setDisplayedAnsData((oldAns) =>
 			oldAns.map((ansData, index) =>
 				index === questionId
@@ -114,6 +105,10 @@ function App() {
 					: ansData
 			)
 		)
+	}
+
+	function handleBackClick() {
+		setCurrentPage((oldPage) => (oldPage - 1) % 3)
 	}
 
 	function handleCheckAnswersClick() {
@@ -176,6 +171,7 @@ function App() {
 					handleAnswerClick={handleAnswerClick}
 					displayedAnsData={displayedAnsData}
 					handleCheckAnswersClick={handleCheckAnswersClick}
+					handleBackClick={handleBackClick}
 				/>
 			)}
 			{currentPage === ANS_PAGE && (
