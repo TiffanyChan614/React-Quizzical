@@ -19,12 +19,17 @@ function App() {
 	const [questionsData, setQuestionsData] = useState([])
 	const [displayedAnsData, setDisplayedAnsData] = useState([])
 	const [score, setScore] = useState(0)
-	const [formData, setFormData] = useState({ 'num-questions': 0 })
+	const [formData, setFormData] = useState({
+		'num-questions': 0,
+		difficulty: '',
+		type: '',
+	})
 
-	const apiUrl = 'https://opentdb.com/api.php?amount='
+	const apiUrl = `https://opentdb.com/api.php?amount=${formData['num-questions']}&difficulty=${formData.difficulty}&type=${formData.type}`
+	console.log('api url', apiUrl)
 
 	function fetchQuestions() {
-		fetch(`${apiUrl}${formData['num-questions']}`)
+		fetch(apiUrl)
 			.then((res) => res.json())
 			.then((data) => {
 				setQuestionsData(
@@ -74,6 +79,7 @@ function App() {
 
 	function handleChange(event) {
 		const { name, value } = event.target
+		console.log('name', name, ':', value)
 		setFormData((prevFormData) => {
 			return {
 				...prevFormData,
