@@ -109,6 +109,7 @@ function App() {
 
 	function handleBackClick() {
 		setCurrentPage((oldPage) => (oldPage - 1) % 3)
+		setQuestionsData([])
 	}
 
 	function handleCheckAnswersClick() {
@@ -138,10 +139,9 @@ function App() {
 
 	function handlePlayAgainClick() {
 		setCurrentPage((oldPage) => (oldPage + 1) % 3)
-		setQuestionsData(null)
-		setDisplayedAnsData(null)
+		setQuestionsData([])
+		setDisplayedAnsData([])
 		setScore(0)
-		fetchQuestions()
 	}
 
 	const yellowBlobs = [yellowblob0, yellowblob1, yellowblob2]
