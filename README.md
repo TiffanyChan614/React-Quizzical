@@ -53,4 +53,4 @@ You can try the page [here](https://quizzical987.netlify.app).
 - ~~Allow the user to choose the number of questions they want to answer~~
 - ~~Allow the user to choose the difficulty of the questions~~
 - ~~Allow the user to choose the category of the questions~~
-- Allow the user to choose the category of the questions
+- ~~Allow the user to choose the category of the questions~~

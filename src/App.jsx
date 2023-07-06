@@ -21,11 +21,12 @@ function App() {
 	const [score, setScore] = useState(0)
 	const [formData, setFormData] = useState({
 		'num-questions': 0,
+		category: '',
 		difficulty: '',
 		type: '',
 	})
 
-	const apiUrl = `https://opentdb.com/api.php?amount=${formData['num-questions']}&difficulty=${formData.difficulty}&type=${formData.type}`
+	const apiUrl = `https://opentdb.com/api.php?amount=${formData['num-questions']}&category=${formData.category}&difficulty=${formData.difficulty}&type=${formData.type}`
 	console.log('api url', apiUrl)
 
 	function fetchQuestions() {
