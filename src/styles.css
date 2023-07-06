@@ -65,6 +65,7 @@ h2 {
 	color: white;
 	margin-top: 15px;
 	font-size: 1rem;
+	align-self: center;
 }
 
 .start-btn:active,
@@ -173,4 +174,33 @@ h2 {
 	color: white;
 	font-size: 0.8rem;
 	border-radius: 8px;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+	font-size: 0.9rem;
+	margin-top: 10px;
+	border: 1px solid #4d5b9e;
+	border-radius: 20px;
+	padding: 20px;
+}
+
+.form > input,
+.form > select {
+	padding: 5px 10px;
+	border-radius: 8px;
+	border: 1px solid #4d5b9e;
+	margin-bottom: 15px;
+	font-size: 0.9rem;
+}
+
+.form > label {
+	padding: 0 5px;
+	margin-bottom: 4px;
+}
+
+.form > input:focus {
+	outline: none;
 }

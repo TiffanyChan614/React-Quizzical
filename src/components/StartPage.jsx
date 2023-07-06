@@ -3,7 +3,7 @@ export default function StartPage({ handleSubmit, handleChange }) {
 		<div className='start content'>
 			<h1>Quizzical</h1>
 			<p>Are you ready to test your brain?</p>
-			<form className='form-container'>
+			<form className='form'>
 				<label htmlFor='num-questions'>Number of questions:</label>
 				<input
 					type='number'
