@@ -2,44 +2,44 @@
 import Question from './Question'
 
 export default function QuizPage({
-	questionsData,
-	handleAnswerClick,
-	displayedAnsData,
-	handleCheckAnswersClick,
-	handleBackClick,
+  questionsData,
+  handleAnswerClick,
+  displayedAnsData,
+  handleCheckAnswersClick,
+  handleBackClick,
 }) {
-	if (!questionsData) {
-		return null
-	}
+  if (!questionsData) {
+    return null
+  }
 
-	return (
-		<div className='quiz content'>
-			<div className='quiz--questions'>
-				{questionsData.map((quizQuestion, index) => (
-					<Question
-						quizQuestion={quizQuestion}
-						key={quizQuestion.id}
-						questionId={quizQuestion.id}
-						handleAnswerClick={handleAnswerClick}
-						displayedAns={
-							displayedAnsData[index] ? displayedAnsData[index] : null
-						}
-						isActive={true}
-					/>
-				))}
-			</div>
-			<div className='quiz--buttons'>
-				<button
-					className='back-btn'
-					onClick={handleBackClick}>
-					Back
-				</button>
-				<button
-					className='check-btn'
-					onClick={handleCheckAnswersClick}>
-					Check answers
-				</button>
-			</div>
-		</div>
-	)
+  return (
+    <div className='quiz content'>
+      <div className='quiz--questions'>
+        {questionsData.map((quizQuestion, index) => (
+          <Question
+            quizQuestion={quizQuestion}
+            key={quizQuestion.id}
+            questionId={quizQuestion.id}
+            handleAnswerClick={handleAnswerClick}
+            displayedAns={
+              displayedAnsData[index] ? displayedAnsData[index] : null
+            }
+            isActive={true}
+          />
+        ))}
+      </div>
+      <div className='quiz--buttons'>
+        <button
+          className='back-btn'
+          onClick={handleBackClick}>
+          Back
+        </button>
+        <button
+          className='check-btn'
+          onClick={handleCheckAnswersClick}>
+          Check answers
+        </button>
+      </div>
+    </div>
+  )
 }
