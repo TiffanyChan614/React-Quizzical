@@ -61,13 +61,30 @@ function App() {
           const allAns = question.incorrectAnswers.concat(
             question.correctAnswer
           )
+
+          const isTrueFalse =
+            allAns.length === 2 &&
+            ((allAns[0] === 'True' && allAns[1] === 'False') ||
+              (allAns[0] === 'False' && allAns[1] === 'True'))
+          console.log(
+            'question',
+            question.question,
+            'is true/false:',
+            isTrueFalse
+          )
+
+          if (isTrueFalse) {
+            allAns.sort((a) => (a === 'True' ? -1 : 1))
+          }
+
           const ansData = allAns.map((ans, ansId) => ({
             id: ansId,
             answer: ans,
             correct: ans === question.correctAnswer,
             selected: false,
           }))
-          return shuffleArray(ansData)
+
+          return isTrueFalse ? ansData : shuffleArray(ansData)
         })
       )
     }
