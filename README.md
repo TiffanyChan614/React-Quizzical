@@ -14,6 +14,7 @@ You can try the page [here](https://quizzical987.netlify.app).
 - CSS 3
 - JavaScript
 - React JS
+- Figma
 
 ## Requirements
 
@@ -22,6 +23,12 @@ You can try the page [here](https://quizzical987.netlify.app).
 - Tally correct answers after 'Check answers' is clicked
 - Styled and polished
 - Limit answer choice to 1 per question
+
+## Local Setup
+
+- Clone the repository
+- Run `npm install` to install the dependencies
+- Run `npm dev` to start the development server
 
 ## Screenshots
 
