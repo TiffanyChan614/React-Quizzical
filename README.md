@@ -8,6 +8,14 @@ This is the final solo project of the [React course by Bob Ziroll on Scrimba](ht
 
 You can try the page [here](https://quizzical987.netlify.app).
 
+## Screenshots
+
+![Start Page](./screenshots/startPage.png)
+
+![Quiz Page](./screenshots/quizPage.png)
+
+![Answer Page](./screenshots/ansPage.png)
+
 ## Built with
 
 - HTML 5
@@ -16,7 +24,7 @@ You can try the page [here](https://quizzical987.netlify.app).
 - React JS
 - Figma
 
-## Requirements
+## Project Requirements
 
 - Two screens: a start page and a quiz page
 - Pull 5 questions from the OTDB API
@@ -30,13 +38,28 @@ You can try the page [here](https://quizzical987.netlify.app).
 - Run `npm install` to install the dependencies
 - Run `npm dev` to start the development server
 
-## Screenshots
+## Dependencies
 
-![Start Page](./screenshots/startPage.png)
+This project depends on the following packages:
 
-![Quiz Page](./screenshots/quizPage.png)
+- `he` (version ^1.2.0): A robust HTML entity encoder/decoder.
+- `react` (version ^18.2.0): A JavaScript library for building user interfaces.
+- `react-dom` (version ^18.2.0): A package for working with the DOM in React applications.
 
-![Answer Page](./screenshots/ansPage.png)
+This project also has the following development dependencies:
+
+- `@types/react` (version ^18.0.37): TypeScript definitions for the React library.
+- `@types/react-dom` (version ^18.0.11): TypeScript definitions for the react-dom package.
+- `@vitejs/plugin-react` (version ^4.0.0): A Vite plugin for React development.
+- `eslint` (version ^8.38.0): A tool for identifying and reporting on patterns found in ECMAScript/JavaScript code.
+- `eslint-plugin-react` (version ^7.32.2): An ESLint plugin for React-specific linting rules.
+- `eslint-plugin-react-hooks` (version ^4.6.0): An ESLint plugin for enforcing rules of Hooks in React applications.
+- `eslint-plugin-react-refresh` (version ^0.3.4): An ESLint plugin for react-refresh.
+- `vite` (version ^4.4.2): A frontend tooling platform that provides faster and leaner development for modern web projects.
+
+## API
+
+- [Open Trivia Database API](https://opentdb.com/)
 
 ## Usage
 
