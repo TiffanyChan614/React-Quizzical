@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import StartPage from './components/StartPage'
 import QuizPage from './components/QuizPage'
 import AnsPage from './components/AnsPage'
+import { fetchQuestions } from './services/QuizService'
 
 import yellowblob0 from './assets/yellowblob0.svg'
 import yellowblob1 from './assets/yellowblob1.svg'
@@ -25,23 +26,6 @@ function App() {
     difficulty: '',
     type: '',
   })
-
-  const apiUrl = `https://opentdb.com/api.php?amount=${formData['num-questions']}&category=${formData.category}&difficulty=${formData.difficulty}&type=${formData.type}`
-
-  function fetchQuestions() {
-    fetch(apiUrl)
-      .then((res) => res.json())
-      .then((data) => {
-        setQuestionsData(
-          data.results.map((question, index) => ({
-            id: index,
-            question: question.question,
-            correctAnswer: question.correct_answer,
-            incorrectAnswers: question.incorrect_answers,
-          }))
-        )
-      })
-  }
 
   function shuffleArray(array) {
     const shuffledArray = [...array]
@@ -100,13 +84,14 @@ function App() {
     })
   }
 
-  function handleStartSubmit(event) {
+  async function handleStartSubmit(event) {
     event.preventDefault()
     if (formData['num-questions'] < 1 || formData['num-questions'] > 50) {
       alert('Please enter a number between 1 and 50')
     } else {
       setCurrentPage((oldPage) => (oldPage + 1) % 3)
-      fetchQuestions()
+      const questionData = await fetchQuestions(formData)
+      setQuestionsData(questionData)
     }
   }
 
