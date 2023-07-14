@@ -16,6 +16,8 @@ export default function QuizPage() {
   function handleBackClick() {
     setCurrentPage((oldPage) => (oldPage - 1) % 3)
     setQuestionsData([])
+    localStorage.removeItem('questionsData')
+    localStorage.removeItem('displayedAnsData')
   }
 
   function handleCheckAnswersClick() {

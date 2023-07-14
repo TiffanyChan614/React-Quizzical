@@ -25,6 +25,7 @@ export default function StartPage() {
       setCurrentPage((oldPage) => (oldPage + 1) % 3)
       const questionData = await fetchQuestions(formData)
       setQuestionsData(questionData)
+      localStorage.setItem('questionsData', JSON.stringify(questionData))
     }
   }
 
