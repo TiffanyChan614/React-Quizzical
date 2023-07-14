@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useContext } from 'react'
 import { AppContext } from '../../App'
+import Footer from '../Footer'
 
 import yellowblob0 from '../../assets/yellowblob0.svg'
 import yellowblob1 from '../../assets/yellowblob1.svg'
@@ -17,17 +18,20 @@ export default function Page({ children }) {
 
   return (
     <>
-      <img
-        className='yellow-blob'
-        src={yellowBlobs[currentPage]}
-        alt='Yellow blob'
-      />
-      <img
-        className='blue-blob'
-        src={blueBlobs[currentPage]}
-        alt='Blue blob'
-      />
+      <div className='background'>
+        <img
+          className='yellow-blob'
+          src={yellowBlobs[currentPage]}
+          alt='Yellow blob'
+        />
+        <img
+          className='blue-blob'
+          src={blueBlobs[currentPage]}
+          alt='Blue blob'
+        />
+      </div>
       {children}
+      <Footer />
     </>
   )
 }
