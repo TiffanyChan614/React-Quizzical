@@ -11,6 +11,7 @@ export default function AnsPage() {
     score,
     setScore,
     setCurrentPage,
+    theme,
   } = useContext(AppContext)
 
   function handlePlayAgainClick() {
@@ -45,7 +46,7 @@ export default function AnsPage() {
           You scored {score}/{questionsData.length} correct answers
         </p>
         <button
-          className='play-again-btn'
+          className={`play-again-btn ${theme}`}
           onClick={handlePlayAgainClick}>
           Play again
         </button>

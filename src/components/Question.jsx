@@ -9,7 +9,7 @@ export default function Question({
   displayedAns,
   isActive,
 }) {
-  const { setDisplayedAnsData } = useContext(AppContext)
+  const { setDisplayedAnsData, theme } = useContext(AppContext)
 
   if (!quizQuestion || !displayedAns) {
     return null
@@ -37,9 +37,11 @@ export default function Question({
       <div className='quiz-question--answers'>
         {displayedAns.map((ans) => (
           <button
-            className={`ans-btn ${isActive && ans.selected ? 'selected' : ''} ${
-              !isActive && ans.correct ? 'correct' : ''
-            } ${!isActive && ans.selected && !ans.correct ? 'incorrect' : ''}`}
+            className={`ans-btn ${theme} ${
+              isActive && ans.selected ? 'selected' : ''
+            } ${!isActive && ans.correct ? 'correct' : ''} ${
+              !isActive && ans.selected && !ans.correct ? 'incorrect' : ''
+            }`}
             key={ans.id}
             onClick={() => handleAnswerClick(ans.id)}
             disabled={!isActive}>

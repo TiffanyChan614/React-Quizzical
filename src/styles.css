@@ -10,13 +10,13 @@ body {
 }
 
 body {
-  background-color: #f5f7fb;
   margin: 0;
   font-family: 'inter', sans-serif;
-  color: #293264;
 }
 
-main {
+.main {
+  background-color: #f5f7fb;
+  color: #293264;
   position: relative;
   width: 100vw;
   min-height: 100vh;
@@ -27,8 +27,9 @@ main {
   justify-content: center;
 }
 
-.background {
-  z-index: 0;
+.main.dark {
+  background-color: #23232b;
+  color: #d1d3dc;
 }
 
 button {
@@ -36,13 +37,13 @@ button {
   border: none;
 }
 
-.yellow-blob {
+.right-blob {
   position: absolute;
   top: 0;
   right: 0;
 }
 
-.blue-blob {
+.left-blob {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -50,7 +51,7 @@ button {
 
 .content {
   display: flex;
-  min-height: 90vh;
+  min-height: 85vh;
   flex-direction: column;
   gap: 10px;
   align-items: center;
@@ -79,6 +80,11 @@ h2 {
   align-self: center;
 }
 
+.start-btn.dark {
+  background-color: #d1d3dc;
+  color: #293264;
+}
+
 button:active:not(.back-btn) {
   box-shadow: inset 3px 3px 5px 5px rgba(0, 0, 0, 0.12);
 }
@@ -87,7 +93,7 @@ button:active:not(.back-btn) {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  border-bottom: 1px solid #dbdef0;
+  border-bottom: 1px solid #737594;
   padding-bottom: 15px;
 }
 
@@ -108,13 +114,23 @@ button:active:not(.back-btn) {
   color: #293264;
   border: 1px solid #4d5b9e;
   border-radius: 8px;
-  font-size: 0.9rem;
+  font-size: 1rem;
   background-color: transparent;
+}
+
+.ans-btn.dark {
+  color: #d1d3dc;
+  border: 1.2px solid #5e648a;
 }
 
 .ans-btn.selected {
   background-color: #d6dbf5;
   border: 0;
+}
+
+.ans-btn.dark.selected {
+  background-color: #5a598d;
+  color: #d1d3dc;
 }
 
 .quiz--buttons {
@@ -136,18 +152,37 @@ button:active:not(.back-btn) {
   color: white;
 }
 
+.check-btn.dark {
+  background-color: #d1d3dc;
+  color: #293264;
+  border: 1px solid #4d4e9e;
+}
+
 .back-btn {
   background-color: #d1d3dc;
   color: #293264;
+}
+
+.back-btn.dark {
+  background-color: #23232b;
+  color: #d1d3dc;
+  border: 1px solid #d1d3dc;
 }
 
 .back-btn:active {
   box-shadow: inset 3px 3px 5px 5px rgba(0, 0, 0, 0.05);
 }
 
+.ans--buttons:disabled {
+  cursor: none;
+}
+
 .ans-btn:disabled:not(.correct) {
   opacity: 0.5;
-  cursor: not-allowed;
+}
+
+.ans-btn.dark:disabled:not(.correct) {
+  opacity: 0.9;
 }
 
 .ans-btn.correct {
@@ -155,9 +190,19 @@ button:active:not(.back-btn) {
   border: none;
 }
 
+.ans-btn.dark.correct {
+  background: #66dc9b;
+  color: #1f232f;
+}
+
 .ans-btn.incorrect {
   background: #f8bcbc;
   border: none;
+}
+
+.ans-btn.dark.incorrect {
+  background: #f9b1b1;
+  color: #1f232f;
 }
 
 .content.correct-answers {
@@ -194,12 +239,18 @@ button:active:not(.back-btn) {
 }
 
 .play-again-btn {
-  background-color: #4d5b9e;
+  background-color: #514d9e;
   border-radius: 15px;
   padding: 10px 25px;
   color: white;
   font-size: 0.9rem;
   border-radius: 8px;
+}
+
+.play-again-btn.dark {
+  background-color: #d1d3dc;
+  color: #293264;
+  border: 1px solid #4d519e;
 }
 
 .form {
@@ -208,23 +259,42 @@ button:active:not(.back-btn) {
   text-align: left;
   font-size: 1rem;
   margin-top: 10px;
-  border: 1px solid #4d5b9e;
+  border: 1px solid #4d4e9e;
   border-radius: 20px;
   padding: 20px;
+}
+
+.form.dark {
+  border: 2px solid #737e94;
 }
 
 .form > input,
 .form > select {
   padding: 5px 10px;
   border-radius: 8px;
-  border: 1px solid #4d5b9e;
+  border: 1px solid #4d519e;
   margin-bottom: 15px;
   font-size: 1rem;
 }
 
+.form.dark > input,
+.form.dark > select {
+  border: 1.5px solid #737e94;
+  background-color: #23232b;
+  color: #d1d3dc;
+}
+
+.form.dark > input::placeholder {
+  color: #8a8da3;
+}
+
 .form > label {
-  padding: 0 5px;
+  padding: 2px 5px;
   margin-bottom: 4px;
+}
+
+.form.dark > label {
+  color: #d1d3dc;
 }
 
 .form > input:focus {
@@ -259,4 +329,43 @@ button:active:not(.back-btn) {
 .footer--socials > a {
   color: #435090;
   font-size: 1.7rem;
+}
+
+.footer--socials.dark {
+  border-left: 1px solid #d1d3dc;
+}
+
+.footer--socials.dark > a {
+  color: #d1d3dc;
+}
+
+.header {
+  width: 100%;
+  padding: 10px;
+}
+
+.theme-setting {
+  display: flex;
+  align-items: center;
+}
+
+.theme-setting .theme-switcher {
+  font-size: 2rem;
+  color: #4d5b9e;
+  cursor: pointer;
+}
+
+.theme-setting .theme-desc {
+  font-size: 0.9rem;
+  color: #293264;
+  margin-left: 5px;
+  margin-top: -7px;
+}
+
+.theme-setting.dark .theme-switcher {
+  color: #d1d3dc;
+}
+
+.theme-setting.dark .theme-desc {
+  color: #d1d3dc;
 }

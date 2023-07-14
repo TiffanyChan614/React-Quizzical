@@ -21,6 +21,7 @@ export default function App() {
     difficulty: '',
     type: '',
   })
+  const [theme, setTheme] = useState('light')
 
   useEffect(() => {
     if (questionsData) {
@@ -48,7 +49,7 @@ export default function App() {
   }, [questionsData])
 
   return (
-    <main>
+    <main className={`main ${theme}`}>
       <AppContext.Provider
         value={{
           currentPage,
@@ -61,6 +62,8 @@ export default function App() {
           setDisplayedAnsData,
           score,
           setScore,
+          theme,
+          setTheme,
         }}>
         <Page>
           {currentPage === START_PAGE && <Page.Start />}

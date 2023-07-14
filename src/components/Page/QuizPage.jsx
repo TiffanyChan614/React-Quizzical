@@ -10,6 +10,7 @@ export default function QuizPage() {
     setQuestionsData,
     displayedAnsData,
     setScore,
+    theme,
   } = useContext(AppContext)
 
   function handleBackClick() {
@@ -61,14 +62,14 @@ export default function QuizPage() {
           />
         ))}
       </div>
-      <div className='quiz--buttons'>
+      <div className={`quiz--buttons ${theme}`}>
         <button
-          className='back-btn'
+          className={`back-btn ${theme}`}
           onClick={handleBackClick}>
           Back
         </button>
         <button
-          className='check-btn'
+          className={`check-btn ${theme}`}
           onClick={handleCheckAnswersClick}>
           Check answers
         </button>

@@ -4,7 +4,7 @@ import { AppContext } from '../../App'
 import { fetchQuestions } from '../../services/QuizService'
 
 export default function StartPage() {
-  const { setCurrentPage, formData, setFormData, setQuestionsData } =
+  const { setCurrentPage, formData, setFormData, setQuestionsData, theme } =
     useContext(AppContext)
 
   function handleFormChange(event) {
@@ -32,7 +32,7 @@ export default function StartPage() {
     <div className='start content'>
       <h1>Quizzical</h1>
       <p>Are you ready to test your brain?</p>
-      <form className='form'>
+      <form className={`form ${theme}`}>
         <label htmlFor='num-questions'>Number of questions:</label>
         <input
           type='number'
@@ -92,7 +92,7 @@ export default function StartPage() {
           <option value='boolean'>True / False</option>
         </select>
         <button
-          className='start-btn'
+          className={`start-btn ${theme}`}
           onClick={(event) => handleStartSubmit(event)}>
           Start quiz
         </button>

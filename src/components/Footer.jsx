@@ -5,11 +5,16 @@ import {
   AiOutlineTwitter,
 } from 'react-icons/ai'
 
+import { useContext } from 'react'
+import { AppContext } from '../App'
+
 export default function Footer() {
+  const { theme } = useContext(AppContext)
+
   return (
     <footer className='footer'>
       <div className='footer--copy'>Developed by Tiffany Chan</div>
-      <div className='footer--socials'>
+      <div className={`footer--socials ${theme}`}>
         <a
           href='https://www.linkedin.com/in/pui-yi-tiffany-chan-2a35271a5/'
           target='_blank'
