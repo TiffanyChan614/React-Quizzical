@@ -34,10 +34,10 @@ export default function App() {
   useEffect(() => {
     if (questionsData.length > 0 && displayedAnsData.length === 0) {
       const updatedAnsData = questionsData.map((question) => {
-        const allAns = question.incorrectAnswers.concat(question.correctAnswer)
+        let allAns = question.incorrectAnswers.concat(question.correctAnswer)
 
         if (isTrueFalse(allAns)) {
-          allAns.sort((a) => (a === 'True' ? -1 : 1))
+          allAns = allAns.sort((a) => (a === 'True' ? -1 : 1))
         } else {
           shuffleArray(allAns)
         }

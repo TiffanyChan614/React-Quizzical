@@ -151,6 +151,7 @@ button:active:not(.back-btn) {
 .check-btn {
   background-color: #4d5b9e;
   color: white;
+  font-size: 1rem;
 }
 
 .check-btn.dark {
@@ -162,6 +163,7 @@ button:active:not(.back-btn) {
 .back-btn {
   background-color: #d1d3dc;
   color: #293264;
+  font-size: 1rem;
 }
 
 .back-btn.dark {
@@ -244,7 +246,7 @@ button:active:not(.back-btn) {
   border-radius: 15px;
   padding: 10px 25px;
   color: white;
-  font-size: 0.9rem;
+  font-size: 1rem;
   border-radius: 8px;
 }
 
