@@ -12,14 +12,24 @@ export const AppContext = createContext()
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState(
-    () => JSON.parse(localStorage.getItem('currentPage')) || START_PAGE
+    () => Number(localStorage.getItem('currentPage')) || START_PAGE
   )
-  const [questionsData, setQuestionsData] = useState(
-    () => JSON.parse(localStorage.getItem('questionsData')) || []
-  )
-  const [displayedAnsData, setDisplayedAnsData] = useState(
-    () => JSON.parse(localStorage.getItem('displayedAnsData')) || []
-  )
+  const [questionsData, setQuestionsData] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem('questionsData')) || []
+    } catch {
+      localStorage.setItem('questionsData', [])
+      return []
+    }
+  })
+  const [displayedAnsData, setDisplayedAnsData] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem('displayedAnsData')) || []
+    } catch {
+      localStorage.setItem('displayedAnsData', [])
+      return []
+    }
+  })
   const [score, setScore] = useState(0)
   const [formData, setFormData] = useState({
     'num-questions': 0,
@@ -29,11 +39,11 @@ export default function App() {
   })
 
   const [theme, setTheme] = useState(
-    () => JSON.parse(localStorage.getItem('theme')) || 'light'
+    () => localStorage.getItem('theme') || 'light'
   )
 
   useEffect(() => {
-    if (questionsData.length > 0 && displayedAnsData.length === 0) {
+    if (questionsData?.length > 0 && displayedAnsData?.length === 0) {
       const updatedAnsData = questionsData.map((question) => {
         let allAns = question.incorrectAnswers.concat(question.correctAnswer)
 
@@ -53,7 +63,7 @@ export default function App() {
 
       setDisplayedAnsData(updatedAnsData)
     }
-  }, [displayedAnsData.length, questionsData])
+  }, [displayedAnsData, questionsData])
 
   useEffect(() => {
     localStorage.setItem('displayedAnsData', JSON.stringify(displayedAnsData))
