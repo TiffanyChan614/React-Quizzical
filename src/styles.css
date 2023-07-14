@@ -154,7 +154,6 @@ button:active:not(.back-btn) {
 .check-btn.dark {
   background-color: #d1d3dc;
   color: #293264;
-  border: 1px solid #4d4e9e;
 }
 
 .back-btn {
@@ -239,7 +238,7 @@ button:active:not(.back-btn) {
 }
 
 .play-again-btn {
-  background-color: #514d9e;
+  background-color: #4d5b9e;
   border-radius: 15px;
   padding: 10px 25px;
   color: white;
@@ -374,6 +373,10 @@ button:active:not(.back-btn) {
   .form {
     width: 100%;
   }
+  .start-btn,
+  .quiz-question--answers button {
+    width: 100%;
+  }
   .form > input::placeholder {
     font-size: 0.9rem;
   }
@@ -381,13 +384,11 @@ button:active:not(.back-btn) {
   .form > select {
     font-size: 0.9rem;
   }
-  button {
-    width: 100%;
-  }
   .quiz--buttons {
     width: 100%;
   }
   .quiz--buttons > button {
     height: 100%;
+    width: 100%;
   }
 }
