@@ -375,4 +375,13 @@ button:active:not(.back-btn) {
   .form {
     width: 85%;
   }
+  button {
+    width: 100%;
+  }
+  .quiz--buttons {
+    width: 100%;
+  }
+  .quiz--buttons > button {
+    height: 40px;
+  }
 }
