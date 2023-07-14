@@ -1,11 +1,25 @@
-import Question from './Question'
+import { useContext } from 'react'
+import { AppContext } from '../../App'
+import Question from '../Question'
 
-export default function AnsPage({
-  questionsData,
-  displayedAnsData,
-  score,
-  handlePlayAgainClick,
-}) {
+export default function AnsPage() {
+  const {
+    questionsData,
+    displayedAnsData,
+    setQuestionsData,
+    setDisplayedAnsData,
+    score,
+    setScore,
+    setCurrentPage,
+  } = useContext(AppContext)
+
+  function handlePlayAgainClick() {
+    setCurrentPage((oldPage) => (oldPage + 1) % 3)
+    setQuestionsData([])
+    setDisplayedAnsData([])
+    setScore(0)
+  }
+
   if (!questionsData) {
     return null
   }

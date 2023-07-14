@@ -1,15 +1,32 @@
+/* eslint-disable react/prop-types */
 import he from 'he'
+import { useContext } from 'react'
+import { AppContext } from '../App'
 
 export default function Question({
   quizQuestion,
-  handleAnswerClick,
   questionId,
   displayedAns,
   isActive,
 }) {
-  // console.log('rendering Question')
+  const { setDisplayedAnsData } = useContext(AppContext)
+
   if (!quizQuestion || !displayedAns) {
     return null
+  }
+
+  function handleAnswerClick(ansId) {
+    setDisplayedAnsData((oldAns) =>
+      oldAns.map((ansData, index) =>
+        index === questionId
+          ? ansData.map((ans) =>
+              ans.id === ansId
+                ? { ...ans, selected: true }
+                : { ...ans, selected: false }
+            )
+          : ansData
+      )
+    )
   }
 
   return (
@@ -24,7 +41,7 @@ export default function Question({
               !isActive && ans.correct ? 'correct' : ''
             } ${!isActive && ans.selected && !ans.correct ? 'incorrect' : ''}`}
             key={ans.id}
-            onClick={() => handleAnswerClick(questionId, ans.id)}
+            onClick={() => handleAnswerClick(ans.id)}
             disabled={!isActive}>
             {he.decode(ans.answer)}
           </button>

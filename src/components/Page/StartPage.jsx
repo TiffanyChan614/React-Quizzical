@@ -1,4 +1,33 @@
-export default function StartPage({ handleSubmit, handleChange }) {
+/* eslint-disable react/prop-types */
+import { useContext } from 'react'
+import { AppContext } from '../../App'
+import { fetchQuestions } from '../../services/QuizService'
+
+export default function StartPage() {
+  const { setCurrentPage, formData, setFormData, setQuestionsData } =
+    useContext(AppContext)
+
+  function handleFormChange(event) {
+    const { name, value } = event.target
+    setFormData((prevFormData) => {
+      return {
+        ...prevFormData,
+        [name]: value,
+      }
+    })
+  }
+
+  async function handleStartSubmit(event) {
+    event.preventDefault()
+    if (formData['num-questions'] < 1 || formData['num-questions'] > 50) {
+      alert('Please enter a number between 1 and 50')
+    } else {
+      setCurrentPage((oldPage) => (oldPage + 1) % 3)
+      const questionData = await fetchQuestions(formData)
+      setQuestionsData(questionData)
+    }
+  }
+
   return (
     <div className='start content'>
       <h1>Quizzical</h1>
@@ -10,13 +39,13 @@ export default function StartPage({ handleSubmit, handleChange }) {
           id='num-questions'
           name='num-questions'
           placeholder='Enter a number between 1 and 50'
-          onChange={(event) => handleChange(event)}
+          onChange={(event) => handleFormChange(event)}
         />
         <label htmlFor='category'>Category:</label>
         <select
           id='category'
           name='category'
-          onChange={handleChange}>
+          onChange={handleFormChange}>
           <option value=''>Any category</option>
           <option value='9'>General Knowledge</option>
           <option value='10'>Entertainment: Books</option>
@@ -47,7 +76,7 @@ export default function StartPage({ handleSubmit, handleChange }) {
         <select
           id='difficulty'
           name='difficulty'
-          onChange={handleChange}>
+          onChange={handleFormChange}>
           <option value=''>Any difficulty</option>
           <option value='easy'>Easy</option>
           <option value='medium'>Medium</option>
@@ -57,14 +86,14 @@ export default function StartPage({ handleSubmit, handleChange }) {
         <select
           id='type'
           name='type'
-          onChange={handleChange}>
+          onChange={handleFormChange}>
           <option value=''>Any type</option>
           <option value='multiple'>Multiple choice</option>
           <option value='boolean'>True / False</option>
         </select>
         <button
           className='start-btn'
-          onClick={(event) => handleSubmit(event)}>
+          onClick={(event) => handleStartSubmit(event)}>
           Start quiz
         </button>
       </form>
