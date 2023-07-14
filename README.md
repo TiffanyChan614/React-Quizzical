@@ -37,6 +37,29 @@ You can try the page [here](https://quizzical987.netlify.app).
 
 ## Getting Started
 
+### Important information
+
+This app has been updated to use local storage to store the user's unsubmitted quiz configuration and progress. If you have played the game before, you will need to clear your local storage to see the changes.
+
+Here is how to clear your local storage:
+
+#### Desktop:
+
+1. Open the developer tools in your browser.
+2. Go to the `Application` tab.
+3. Click on `Local Storage` in the left sidebar.
+4. Right-click on the `https://quizzical987.netlify.app` row and select `Clear`.
+
+#### Android:
+
+[Clear local storage on Chrome](https://browserhow.com/how-to-view-clear-site-storage-data-on-chrome-android/)
+
+#### iOS:
+
+1. Go to `Settings` > `Safari` > `Advanced` > `Website Data`
+2. Search for the website.
+3. Tap `Edit` and then `Delete` next to the website.
+
 ### Built with
 
 - HTML 5
