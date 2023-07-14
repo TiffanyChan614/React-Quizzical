@@ -1,14 +1,33 @@
 # React-Quizzical
 
-## Description
+## Table of Contents
+
+- [Overview](#overview)
+  - [Description](#description)
+  - [Live Demo](#live-demo)
+  - [Screenshots](#screenshots)
+- [Getting Started](#getting-started)
+  - [Built with](#built-with)
+  - [Local Setup](#local-setup)
+  - [Dependencies](#dependencies)
+- [Features](#features)
+  - [Project Requirements](#project-requirements)
+  - [Extra Features](#extra-features)
+- [Usage](#usage)
+- [API](#api)
+- [Skills Learned](#skills-learned)
+
+## Overview
+
+### Description
 
 This is the final solo project of the [React course by Bob Ziroll on Scrimba](https://scrimba.com/learn/learnreact). The code is all written by me without any guidance. The project is a quiz app that fetches trivia questions from the [Open Trivia Database API](https://opentdb.com/) and score players based on their answers.
 
-## Live Demo
+### Live Demo
 
 You can try the page [here](https://quizzical987.netlify.app).
 
-## Screenshots
+### Screenshots
 
 ![Start Page](./screenshots/startPage.png)
 
@@ -16,7 +35,9 @@ You can try the page [here](https://quizzical987.netlify.app).
 
 ![Answer Page](./screenshots/ansPage.png)
 
-## Built with
+## Getting Started
+
+### Built with
 
 - HTML 5
 - CSS 3
@@ -24,24 +45,17 @@ You can try the page [here](https://quizzical987.netlify.app).
 - React JS
 - Figma
 
-## Project Requirements
-
-- Two screens: a start page and a quiz page
-- Pull 5 questions from the OTDB API
-- Tally correct answers after 'Check answers' is clicked
-- Styled and polished
-- Limit answer choice to 1 per question
-
-## Local Setup
+### Local Setup
 
 - Clone the repository
 - Run `npm install` to install the dependencies
 - Run `npm dev` to start the development server
 
-## Dependencies
+### Dependencies
 
 This project depends on the following packages:
 
+- `classnames` (version ^2.3.2): A JavaScript utility for conditionally joining classNames together.
 - `he` (version ^1.2.0): A robust HTML entity encoder/decoder.
 - `react` (version ^18.2.0): A JavaScript library for building user interfaces.
 - `react-dom` (version ^18.2.0): A package for working with the DOM in React applications.
@@ -57,19 +71,44 @@ This project also has the following development dependencies:
 - `eslint-plugin-react-refresh` (version ^0.3.4): An ESLint plugin for react-refresh.
 - `vite` (version ^4.4.2): A frontend tooling platform that provides faster and leaner development for modern web projects.
 
-## API
+## Features
 
-- [Open Trivia Database API](https://opentdb.com/)
+### Project Requirements
+
+- [x] Two screens: a start page and a quiz page
+- [x] Pull 5 questions from the OTDB API
+- [x] Tally correct answers after 'Check answers' is clicked
+- [x] Styled and polished
+- [x] Limit answer choice to 1 per question## Future Improvements
+
+### Extra Features
+
+- [x] Allow the user to choose the number of questions they want to answer
+- [x] Allow the user to choose the difficulty of the questions
+- [x] Allow the user to choose the category of the questions
+- [x] Allow the user to choose the category of the questions
+- [x] Add a back button to the quiz page to allow the user to go back to the start page
+- [x] Avoid shuffling the answers of true/false questions
+- [x] Light/dark mode
+- [x] Progress preserves when the user refreshes the page
+- [x] Add a footer with links to my social media
+- [ ] Add French and Chinese translations
+- [ ] Store user's history of quiz results in Firebase
+- [ ] Add a leaderboard to display the top 10 scores
 
 ## Usage
 
 1. When you first load the application, you will see the start page with the title "Quizzical" and a prompt asking if you are ready to test your brain.
-   Click the "Start quiz" button to begin the quiz.
+   Enter your configuration and click the "Start quiz" button to begin the quiz.
 2. The application will fetch a set of trivia questions from the API and display them one by one on the quiz page.
 3. For each question, choose the answer you think is correct by clicking on the corresponding button.
 4. Once you have answered all the questions, click the "Check answers" button to see your score.
-5. The answer page will display the questions again with the correct answers highlighted and your score out of 5.
+5. The answer page will display the questions again with the correct answers highlighted and your score out of the total number of questions.
 6. To play again, click the "Play again" button.
+
+## API
+
+- [Open Trivia Database API](https://opentdb.com/)
 
 ## Skills Learned
 
@@ -77,12 +116,4 @@ This project also has the following development dependencies:
 - Conditional rendering in React
 - Fetching data from an API
 - Handling state and side effects in React
-
-## Future Improvements
-
-- ~~Allow the user to choose the number of questions they want to answer~~
-- ~~Allow the user to choose the difficulty of the questions~~
-- ~~Allow the user to choose the category of the questions~~
-- ~~Allow the user to choose the category of the questions~~
-- ~~Add a back button to the quiz page to allow the user to go back to the start page~~
-- ~~Avoid shuffling the answers of true/false questions~~
+- Using context and compound components in React
