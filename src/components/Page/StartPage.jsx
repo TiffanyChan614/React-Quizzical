@@ -25,7 +25,12 @@ export default function StartPage() {
       setCurrentPage((oldPage) => (oldPage + 1) % 3)
       const questions = await fetchQuestions(formData)
       setQuestionsData(questions)
-      console.log('new questions: ', questions)
+      setFormData({
+        'num-questions': 0,
+        category: '',
+        difficulty: '',
+        type: '',
+      })
       localStorage.setItem('questionsData', JSON.stringify(questions))
     }
   }
@@ -41,12 +46,16 @@ export default function StartPage() {
           id='num-questions'
           name='num-questions'
           placeholder='Enter a number between 1 and 50'
+          value={
+            formData['num-questions'] === 0 ? '' : formData['num-questions']
+          }
           onChange={(event) => handleFormChange(event)}
         />
         <label htmlFor='category'>Category:</label>
         <select
           id='category'
           name='category'
+          value={formData.category}
           onChange={handleFormChange}>
           <option value=''>Any category</option>
           <option value='9'>General Knowledge</option>
@@ -78,6 +87,7 @@ export default function StartPage() {
         <select
           id='difficulty'
           name='difficulty'
+          value={formData.difficulty}
           onChange={handleFormChange}>
           <option value=''>Any difficulty</option>
           <option value='easy'>Easy</option>
@@ -88,6 +98,7 @@ export default function StartPage() {
         <select
           id='type'
           name='type'
+          value={formData.type}
           onChange={handleFormChange}>
           <option value=''>Any type</option>
           <option value='multiple'>Multiple choice</option>

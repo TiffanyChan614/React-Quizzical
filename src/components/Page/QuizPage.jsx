@@ -9,7 +9,6 @@ export default function QuizPage() {
     questionsData,
     setQuestionsData,
     displayedAnsData,
-    setFormData,
     setScore,
     theme,
   } = useContext(AppContext)
@@ -17,7 +16,6 @@ export default function QuizPage() {
   function handleBackClick() {
     setCurrentPage((oldPage) => (oldPage - 1) % 3)
     setQuestionsData([])
-    setFormData({ 'num-questions': 0, category: '', difficulty: '', type: '' })
     localStorage.setItem('questionsData', [])
     localStorage.setItem('displayedAnsData', [])
   }

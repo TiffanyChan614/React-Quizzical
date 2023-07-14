@@ -30,14 +30,31 @@ export default function App() {
       return []
     }
   })
-  const [score, setScore] = useState(0)
-  const [formData, setFormData] = useState({
-    'num-questions': 0,
-    category: '',
-    difficulty: '',
-    type: '',
+  const [formData, setFormData] = useState(() => {
+    try {
+      const storedFormData = JSON.parse(localStorage.getItem('formData'))
+      return storedFormData
+        ? {
+            ['num-questions']: Number(storedFormData['num-questions']),
+            ...storedFormData,
+          }
+        : {
+            'num-questions': 0,
+            category: '',
+            difficulty: '',
+            type: '',
+          }
+    } catch {
+      return {
+        'num-questions': 0,
+        category: '',
+        difficulty: '',
+        type: '',
+      }
+    }
   })
 
+  const [score, setScore] = useState(0)
   const [theme, setTheme] = useState(
     () => localStorage.getItem('theme') || 'light'
   )
@@ -78,8 +95,12 @@ export default function App() {
   }, [theme])
 
   useEffect(() => {
-    localStorage.setItem('questionsData', [])
-  }, [])
+    localStorage.setItem('questionsData', JSON.stringify(questionsData))
+  }, [questionsData])
+
+  useEffect(() => {
+    localStorage.setItem('formData', JSON.stringify(formData))
+  }, [formData])
 
   return (
     <main className={`main ${theme}`}>
