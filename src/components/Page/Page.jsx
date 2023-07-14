@@ -20,16 +20,18 @@ export default function Page({ children }) {
     <>
       {theme === 'light' ? (
         <>
-          <img
-            className='right-blob'
-            src={rightBlobs[currentPage]}
-            alt='Right blob'
-          />
-          <img
-            className='left-blob'
-            src={leftBlobs[currentPage]}
-            alt='Left blob'
-          />
+          <div className='background-image right-blob'>
+            <img
+              src={rightBlobs[currentPage]}
+              alt='Right blob'
+            />
+          </div>
+          <div className='background-image left-blob'>
+            <img
+              src={leftBlobs[currentPage]}
+              alt='Left blob'
+            />
+          </div>
         </>
       ) : null}
       <Header />
