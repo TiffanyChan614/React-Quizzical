@@ -12,7 +12,6 @@ body {
 body {
   margin: 0;
   font-family: 'inter', sans-serif;
-  overflow: hidden;
 }
 
 .main {
@@ -373,7 +372,7 @@ button:active:not(.back-btn) {
 
 @media only screen and (max-width: 480px) {
   .form {
-    width: 85%;
+    width: 90%;
   }
   button {
     width: 100%;
