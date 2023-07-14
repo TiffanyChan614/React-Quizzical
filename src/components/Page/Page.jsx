@@ -11,23 +11,27 @@ import yellowBlob1 from '../../assets/yellowblob1.svg'
 import yellowBlob2 from '../../assets/yellowblob2.svg'
 
 export default function Page({ children }) {
-  const { currentPage } = useContext(AppContext)
+  const { currentPage, theme } = useContext(AppContext)
 
   const rightBlobs = [yellowBlob0, yellowBlob1, yellowBlob2]
   const leftBlobs = [blueBlob0, blueBlob1, blueBlob2]
 
   return (
     <>
-      <img
-        className='right-blob'
-        src={rightBlobs[currentPage]}
-        alt='Right blob'
-      />
-      <img
-        className='left-blob'
-        src={leftBlobs[currentPage]}
-        alt='Left blob'
-      />
+      {theme === 'light' ? (
+        <>
+          <img
+            className='right-blob'
+            src={rightBlobs[currentPage]}
+            alt='Right blob'
+          />
+          <img
+            className='left-blob'
+            src={leftBlobs[currentPage]}
+            alt='Left blob'
+          />
+        </>
+      ) : null}
       <Header />
       {children}
       <Footer />
