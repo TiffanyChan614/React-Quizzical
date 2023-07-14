@@ -31,7 +31,6 @@ export default function StartPage() {
         difficulty: '',
         type: '',
       })
-      localStorage.setItem('questionsData', JSON.stringify(questions))
     }
   }
 

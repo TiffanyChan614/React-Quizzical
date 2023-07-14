@@ -11,14 +11,17 @@ import Page from './components/Page'
 export const AppContext = createContext()
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState(
-    () => Number(localStorage.getItem('currentPage')) || START_PAGE
-  )
+  const [currentPage, setCurrentPage] = useState(() => {
+    try {
+      return Number(localStorage.getItem('currentPage')) || START_PAGE
+    } catch {
+      return START_PAGE
+    }
+  })
   const [questionsData, setQuestionsData] = useState(() => {
     try {
       return JSON.parse(localStorage.getItem('questionsData')) || []
     } catch {
-      localStorage.setItem('questionsData', [])
       return []
     }
   })
@@ -26,7 +29,6 @@ export default function App() {
     try {
       return JSON.parse(localStorage.getItem('displayedAnsData')) || []
     } catch {
-      localStorage.setItem('displayedAnsData', [])
       return []
     }
   })
@@ -60,6 +62,26 @@ export default function App() {
   )
 
   useEffect(() => {
+    localStorage.setItem('displayedAnsData', JSON.stringify(displayedAnsData))
+  }, [displayedAnsData])
+
+  useEffect(() => {
+    localStorage.setItem('currentPage', currentPage)
+  }, [currentPage])
+
+  useEffect(() => {
+    localStorage.setItem('theme', theme)
+  }, [theme])
+
+  useEffect(() => {
+    localStorage.setItem('questionsData', JSON.stringify(questionsData))
+  }, [questionsData])
+
+  useEffect(() => {
+    localStorage.setItem('formData', JSON.stringify(formData))
+  }, [formData])
+
+  useEffect(() => {
     if (questionsData?.length > 0 && displayedAnsData?.length === 0) {
       const updatedAnsData = questionsData.map((question) => {
         let allAns = question.incorrectAnswers.concat(question.correctAnswer)
@@ -81,26 +103,6 @@ export default function App() {
       setDisplayedAnsData(updatedAnsData)
     }
   }, [displayedAnsData, questionsData])
-
-  useEffect(() => {
-    localStorage.setItem('displayedAnsData', JSON.stringify(displayedAnsData))
-  }, [displayedAnsData])
-
-  useEffect(() => {
-    localStorage.setItem('currentPage', currentPage)
-  }, [currentPage])
-
-  useEffect(() => {
-    localStorage.setItem('theme', theme)
-  }, [theme])
-
-  useEffect(() => {
-    localStorage.setItem('questionsData', JSON.stringify(questionsData))
-  }, [questionsData])
-
-  useEffect(() => {
-    localStorage.setItem('formData', JSON.stringify(formData))
-  }, [formData])
 
   return (
     <main className={`main ${theme}`}>
