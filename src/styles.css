@@ -133,7 +133,7 @@ button:active:not(.back-btn) {
 
 .quiz--buttons {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: 20px;
 }
@@ -224,8 +224,8 @@ button:active:not(.back-btn) {
 }
 
 .ans--buttons {
-  width: 100%;
   display: flex;
+  text-align: right;
   justify-content: flex-end;
   align-items: center;
   gap: 20px;
@@ -369,6 +369,11 @@ button:active:not(.back-btn) {
   color: #d1d3dc;
 }
 
+.quiz.content > div,
+.ans.content > div {
+  width: 80%;
+}
+
 @media only screen and (max-width: 480px) {
   .form {
     width: 100%;
@@ -389,6 +394,13 @@ button:active:not(.back-btn) {
   }
   .quiz--buttons > button {
     height: 100%;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  .quiz.content > div,
+  .ans.content > div {
     width: 100%;
   }
 }
