@@ -6,7 +6,10 @@ export default function Header() {
   const { theme, setTheme } = useContext(AppContext)
 
   function toggleTheme() {
-    setTheme((oldTheme) => (oldTheme === 'light' ? 'dark' : 'light'))
+    setTimeout(
+      () => setTheme((oldTheme) => (oldTheme === 'light' ? 'dark' : 'light')),
+      100
+    )
   }
   return (
     <header className='header'>
