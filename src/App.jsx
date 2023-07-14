@@ -27,7 +27,9 @@ export default function App() {
     difficulty: '',
     type: '',
   })
-  const [theme, setTheme] = useState('light')
+  const [theme, setTheme] = useState(
+    () => localStorage.getItem('theme') || 'light'
+  )
 
   useEffect(() => {
     if (questionsData.length > 0 && displayedAnsData.length === 0) {
@@ -59,6 +61,10 @@ export default function App() {
   useEffect(() => {
     localStorage.setItem('currentPage', currentPage)
   }, [currentPage])
+
+  useEffect(() => {
+    localStorage.setItem('theme', theme)
+  }, [theme])
 
   return (
     <main className={`main ${theme}`}>
