@@ -18,8 +18,8 @@ export default function AnsPage() {
     setCurrentPage((oldPage) => (oldPage + 1) % 3)
     setQuestionsData([])
     setDisplayedAnsData([])
-    localStorage.removeItem('questionsData')
-    localStorage.removeItem('displayedAnsData')
+    localStorage.setItem('questionsData', [])
+    localStorage.setItem('displayedAnsData', [])
     setScore(0)
   }
 

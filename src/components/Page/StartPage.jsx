@@ -23,9 +23,10 @@ export default function StartPage() {
       alert('Please enter a number between 1 and 50')
     } else {
       setCurrentPage((oldPage) => (oldPage + 1) % 3)
-      const questionData = await fetchQuestions(formData)
-      setQuestionsData(questionData)
-      localStorage.setItem('questionsData', JSON.stringify(questionData))
+      const questions = await fetchQuestions(formData)
+      setQuestionsData(questions)
+      console.log('new questions: ', questions)
+      localStorage.setItem('questionsData', JSON.stringify(questions))
     }
   }
 
