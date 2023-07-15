@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import { AppContext } from '../../App'
 import Question from '../Question'
 
-export default function QuizPage() {
+export default function PageQuiz() {
   const {
     setCurrentPage,
     questionsData,

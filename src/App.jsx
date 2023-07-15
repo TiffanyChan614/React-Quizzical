@@ -6,7 +6,7 @@ import {
   QUIZ_PAGE,
   ANS_PAGE,
 } from './utils/helper'
-import Page from './components/Page'
+import PageLayout from './components/PageLayout/index'
 
 export const AppContext = createContext()
 
@@ -121,11 +121,11 @@ export default function App() {
           theme,
           setTheme,
         }}>
-        <Page>
-          {currentPage === START_PAGE && <Page.Start />}
-          {currentPage === QUIZ_PAGE && <Page.Quiz />}
-          {currentPage === ANS_PAGE && <Page.Ans />}
-        </Page>
+        <PageLayout>
+          {currentPage === START_PAGE && <PageLayout.Start />}
+          {currentPage === QUIZ_PAGE && <PageLayout.Quiz />}
+          {currentPage === ANS_PAGE && <PageLayout.Ans />}
+        </PageLayout>
       </AppContext.Provider>
     </main>
   )

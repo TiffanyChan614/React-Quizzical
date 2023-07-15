@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import { AppContext } from '../../App'
 import { fetchQuestions } from '../../services/QuizService'
 
-export default function StartPage() {
+export default function PageStart() {
   const { setCurrentPage, formData, setFormData, setQuestionsData, theme } =
     useContext(AppContext)
 

@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import { AppContext } from '../../App'
 import Question from '../Question'
 
-export default function AnsPage() {
+export default function PageAns() {
   const {
     questionsData,
     displayedAnsData,

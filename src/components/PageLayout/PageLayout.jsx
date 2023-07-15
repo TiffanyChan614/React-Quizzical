@@ -10,7 +10,7 @@ import yellowBlob0 from '../../assets/yellowblob0.svg'
 import yellowBlob1 from '../../assets/yellowblob1.svg'
 import yellowBlob2 from '../../assets/yellowblob2.svg'
 
-export default function Page({ children }) {
+export default function PageLayout({ children }) {
   const { currentPage, theme } = useContext(AppContext)
 
   const rightBlobs = [yellowBlob0, yellowBlob1, yellowBlob2]
