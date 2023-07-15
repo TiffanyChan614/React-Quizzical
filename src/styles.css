@@ -375,12 +375,20 @@ button:active:not(.back-btn) {
 }
 
 @media only screen and (max-width: 480px) {
+  .content {
+    font-size: 0.9rem;
+  }
   .form {
     width: 100%;
+    font-size: 0.9rem;
+  }
+  .quiz-question--question {
+    font-size: 0.9rem;
   }
   .start-btn,
   .quiz-question--answers button {
     width: 100%;
+    font-size: 0.9rem;
   }
   .form > input::placeholder {
     font-size: 0.9rem;
@@ -395,6 +403,9 @@ button:active:not(.back-btn) {
   .quiz--buttons > button {
     height: 100%;
     width: 100%;
+  }
+  .footer {
+    font-size: 0.7rem;
   }
 }
 
