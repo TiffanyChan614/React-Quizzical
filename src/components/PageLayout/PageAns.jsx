@@ -5,9 +5,7 @@ import Question from '../Question'
 export default function PageAns() {
   const {
     questionsData,
-    displayedAnsData,
     setQuestionsData,
-    setDisplayedAnsData,
     score,
     setScore,
     setCurrentPage,
@@ -17,9 +15,6 @@ export default function PageAns() {
   function handlePlayAgainClick() {
     setCurrentPage((oldPage) => (oldPage + 1) % 3)
     setQuestionsData([])
-    setDisplayedAnsData([])
-    localStorage.setItem('questionsData', [])
-    localStorage.setItem('displayedAnsData', [])
     setScore(0)
   }
 
@@ -30,15 +25,11 @@ export default function PageAns() {
   return (
     <div className='ans content'>
       <div className='ans--questions'>
-        {questionsData.map((quizQuestion, index) => (
+        {questionsData.map((question) => (
           <Question
-            quizQuestion={quizQuestion}
-            key={quizQuestion.id}
-            questionId={quizQuestion.id}
-            handleAnswerClick={() => {}}
-            displayedAns={
-              displayedAnsData[index] ? displayedAnsData[index] : null
-            }
+            question={question}
+            key={question.id}
+            questionId={question.id}
             isActive={false}
           />
         ))}

@@ -4,28 +4,20 @@ import { AppContext } from '../../App'
 import Question from '../Question'
 
 export default function PageQuiz() {
-  const {
-    setCurrentPage,
-    questionsData,
-    setQuestionsData,
-    displayedAnsData,
-    setScore,
-    theme,
-  } = useContext(AppContext)
+  const { setCurrentPage, questionsData, setQuestionsData, setScore, theme } =
+    useContext(AppContext)
 
   function handleBackClick() {
     setCurrentPage((oldPage) => (oldPage - 1) % 3)
     setQuestionsData([])
-    localStorage.setItem('questionsData', [])
-    localStorage.setItem('displayedAnsData', [])
   }
 
   function handleCheckAnswersClick() {
     let newScore = 0
     let allAnswered = true
-    displayedAnsData.forEach((ansData) => {
+    questionsData.forEach((question) => {
       let answered = false
-      ansData.forEach((ans) => {
+      question.answers.forEach((ans) => {
         if (ans.selected) {
           answered = true
         }
@@ -52,14 +44,11 @@ export default function PageQuiz() {
   return (
     <div className='quiz content'>
       <div className='quiz--questions'>
-        {questionsData.map((quizQuestion, index) => (
+        {questionsData.map((question) => (
           <Question
-            quizQuestion={quizQuestion}
-            key={quizQuestion.id}
-            questionId={quizQuestion.id}
-            displayedAns={
-              displayedAnsData[index] ? displayedAnsData[index] : null
-            }
+            question={question}
+            key={question.id}
+            questionId={question.id}
             isActive={true}
           />
         ))}

@@ -2,6 +2,7 @@
 import { useContext } from 'react'
 import { AppContext } from '../../App'
 import { fetchQuestions } from '../../services/QuizService'
+import { formatQuestionsData } from '../../utils/helper'
 
 export default function PageStart() {
   const { setCurrentPage, formData, setFormData, setQuestionsData, theme } =
@@ -24,7 +25,7 @@ export default function PageStart() {
     } else {
       setCurrentPage((oldPage) => (oldPage + 1) % 3)
       const questions = await fetchQuestions(formData)
-      setQuestionsData(questions)
+      setQuestionsData(formatQuestionsData(questions))
       setFormData({
         'num-questions': 0,
         category: '',

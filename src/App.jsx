@@ -1,11 +1,5 @@
 import { useState, useEffect, createContext } from 'react'
-import {
-  shuffleArray,
-  isTrueFalse,
-  START_PAGE,
-  QUIZ_PAGE,
-  ANS_PAGE,
-} from './utils/helper'
+import { START_PAGE, QUIZ_PAGE, ANS_PAGE } from './utils/helper'
 import PageLayout from './components/PageLayout/index'
 
 export const AppContext = createContext()
@@ -21,13 +15,6 @@ export default function App() {
   const [questionsData, setQuestionsData] = useState(() => {
     try {
       return JSON.parse(localStorage.getItem('questionsData')) || []
-    } catch {
-      return []
-    }
-  })
-  const [displayedAnsData, setDisplayedAnsData] = useState(() => {
-    try {
-      return JSON.parse(localStorage.getItem('displayedAnsData')) || []
     } catch {
       return []
     }
@@ -62,10 +49,6 @@ export default function App() {
   )
 
   useEffect(() => {
-    localStorage.setItem('displayedAnsData', JSON.stringify(displayedAnsData))
-  }, [displayedAnsData])
-
-  useEffect(() => {
     localStorage.setItem('currentPage', currentPage)
   }, [currentPage])
 
@@ -81,29 +64,6 @@ export default function App() {
     localStorage.setItem('formData', JSON.stringify(formData))
   }, [formData])
 
-  useEffect(() => {
-    if (questionsData?.length > 0 && displayedAnsData?.length === 0) {
-      const updatedAnsData = questionsData.map((question) => {
-        let allAns = question.incorrectAnswers.concat(question.correctAnswer)
-
-        if (isTrueFalse(allAns)) {
-          allAns = allAns.sort((a) => (a === 'True' ? -1 : 1))
-        } else {
-          shuffleArray(allAns)
-        }
-
-        return allAns.map((ans, ansId) => ({
-          id: ansId,
-          answer: ans,
-          correct: ans === question.correctAnswer,
-          selected: false,
-        }))
-      })
-
-      setDisplayedAnsData(updatedAnsData)
-    }
-  }, [displayedAnsData, questionsData])
-
   return (
     <main className={`main ${theme}`}>
       <AppContext.Provider
@@ -114,8 +74,6 @@ export default function App() {
           setFormData,
           questionsData,
           setQuestionsData,
-          displayedAnsData,
-          setDisplayedAnsData,
           score,
           setScore,
           theme,

@@ -3,39 +3,33 @@ import he from 'he'
 import { useContext } from 'react'
 import { AppContext } from '../App'
 
-export default function Question({
-  quizQuestion,
-  questionId,
-  displayedAns,
-  isActive,
-}) {
-  const { setDisplayedAnsData, theme } = useContext(AppContext)
+export default function Question({ question, questionId, isActive }) {
+  const { setQuestionsData, theme } = useContext(AppContext)
 
-  if (!quizQuestion || !displayedAns) {
+  if (!question) {
     return null
   }
 
   function handleAnswerClick(ansId) {
-    setDisplayedAnsData((oldAns) =>
-      oldAns.map((ansData, index) =>
-        index === questionId
-          ? ansData.map((ans) =>
-              ans.id === ansId
-                ? { ...ans, selected: true }
-                : { ...ans, selected: false }
-            )
-          : ansData
+    setQuestionsData((oldQuestions) =>
+      oldQuestions.map((questionData) =>
+        questionData.id === questionId
+          ? {
+              ...questionData,
+              answers: questionData.answers.map((ans) =>
+                ans.id === ansId ? { ...ans, selected: true } : ans
+              ),
+            }
+          : questionData
       )
     )
   }
 
   return (
     <div className='quiz-question'>
-      <h2 className='quiz-question--question'>
-        {he.decode(quizQuestion.question)}
-      </h2>
+      <h2 className='quiz-question--question'>{he.decode(question.title)}</h2>
       <div className='quiz-question--answers'>
-        {displayedAns.map((ans) => (
+        {question.answers.map((ans) => (
           <button
             className={`ans-btn ${theme} ${
               isActive && ans.selected ? 'selected' : ''
@@ -45,7 +39,7 @@ export default function Question({
             key={ans.id}
             onClick={() => handleAnswerClick(ans.id)}
             disabled={!isActive}>
-            {he.decode(ans.answer)}
+            {he.decode(ans.title)}
           </button>
         ))}
       </div>

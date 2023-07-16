@@ -17,6 +17,36 @@ export function isTrueFalse(ans) {
   )
 }
 
+export function formatAnswers(incorrectAnswers, correctAnswer) {
+  let answers = incorrectAnswers
+    .map((ans) => ({ title: ans, correct: false }))
+    .concat({ title: correctAnswer, correct: true })
+  if (isTrueFalse(answers)) {
+    answers = answers.sort((a) => (a === 'True' ? -1 : 1))
+  } else {
+    shuffleArray(answers)
+  }
+
+  return answers.map((answer, ansId) => {
+    const formattedAnswer = {
+      id: ansId,
+      title: answer.title,
+      selected: false,
+      correct: answer.correct,
+    }
+
+    return formattedAnswer
+  })
+}
+
+export function formatQuestionsData(questions) {
+  return questions.map((question) => ({
+    id: question.id,
+    title: question.question,
+    answers: formatAnswers(question.incorrectAnswers, question.correctAnswer),
+  }))
+}
+
 export const START_PAGE = 0,
   QUIZ_PAGE = 1,
   ANS_PAGE = 2
