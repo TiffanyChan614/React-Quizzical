@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import { AppContext } from '../../App'
 import Question from '../common/Question'
 
-export default function PageQuiz() {
+export default function ContentQuiz() {
   const { setCurrentPage, questionsData, setQuestionsData, setScore, theme } =
     useContext(AppContext)
 

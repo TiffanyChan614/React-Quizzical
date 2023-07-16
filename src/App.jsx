@@ -1,5 +1,10 @@
 import { useState, useEffect, createContext } from 'react'
-import { START_PAGE, QUIZ_PAGE, ANS_PAGE } from './utils/helper'
+import {
+  START_PAGE,
+  QUIZ_PAGE,
+  ANS_PAGE,
+  SCOREBOARD_PAGE,
+} from './utils/helper'
 import PageLayout from './components/common/PageLayout'
 import Content from './components/Content/index'
 import useLocalStorage from './hooks/useLocalStorage'
@@ -91,6 +96,7 @@ export default function App() {
           {currentPage === START_PAGE && <Content.Start />}
           {currentPage === QUIZ_PAGE && <Content.Quiz />}
           {currentPage === ANS_PAGE && <Content.Ans />}
+          {currentPage === SCOREBOARD_PAGE && <Content.Scoreboard />}
         </PageLayout>
       </AppContext.Provider>
     </main>
