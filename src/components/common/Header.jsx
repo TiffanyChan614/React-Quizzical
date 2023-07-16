@@ -1,10 +1,10 @@
 import { WiMoonAltFirstQuarter, WiMoonAltThirdQuarter } from 'react-icons/wi'
 import { useContext } from 'react'
 import { AppContext } from '../../App'
-import { START_PAGE, SCOREBOARD_PAGE } from '../../utils/helper'
+import { START_PAGE, SCOREBOARD_PAGE } from '../../utils/constants'
 
 export default function Header() {
-  const { setCurrentPage, theme, setTheme } = useContext(AppContext)
+  const { setCurrentPage, quizPage, theme, setTheme } = useContext(AppContext)
 
   function toggleTheme() {
     setTimeout(
@@ -14,7 +14,7 @@ export default function Header() {
   }
 
   function goToQuiz() {
-    setCurrentPage(START_PAGE)
+    setCurrentPage(quizPage)
   }
 
   function goToScoreboard() {

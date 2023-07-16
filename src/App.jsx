@@ -4,7 +4,7 @@ import {
   QUIZ_PAGE,
   ANS_PAGE,
   SCOREBOARD_PAGE,
-} from './utils/helper'
+} from './utils/constants'
 import PageLayout from './components/common/PageLayout'
 import Content from './components/Content/index'
 import useLocalStorage from './hooks/useLocalStorage'
@@ -15,6 +15,13 @@ export const AppContext = createContext()
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState(() => {
+    try {
+      return Number(localStorage.getItem('currentPage')) || START_PAGE
+    } catch {
+      return START_PAGE
+    }
+  })
+  const [quizPage, setQuizPage] = useState(() => {
     try {
       return Number(localStorage.getItem('currentPage')) || START_PAGE
     } catch {
@@ -78,9 +85,11 @@ export default function App() {
   // }, [])
 
   useLocalStorage('currentPage', currentPage)
+  useLocalStorage('quizPage', quizPage)
   useLocalStorage('theme', theme)
   useLocalStorage('questionsData', questionsData)
   useLocalStorage('formData', formData)
+  useLocalStorage('score', score)
 
   return (
     <main className={`main ${theme}`}>
@@ -98,6 +107,8 @@ export default function App() {
           setTheme,
           scoreboard,
           setScoreboard,
+          quizPage,
+          setQuizPage,
         }}>
         <PageLayout>
           {currentPage === START_PAGE && <Content.Start />}

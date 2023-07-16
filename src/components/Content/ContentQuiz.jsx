@@ -2,13 +2,21 @@
 import { useContext } from 'react'
 import { AppContext } from '../../App'
 import Question from '../common/Question'
+import { START_PAGE, ANS_PAGE } from '../../utils/constants'
 
 export default function ContentQuiz() {
-  const { setCurrentPage, questionsData, setQuestionsData, setScore, theme } =
-    useContext(AppContext)
+  const {
+    setCurrentPage,
+    setQuizPage,
+    questionsData,
+    setQuestionsData,
+    setScore,
+    theme,
+  } = useContext(AppContext)
 
   function handleBackClick() {
-    setCurrentPage((oldPage) => (oldPage - 1) % 4)
+    setCurrentPage(START_PAGE)
+    setQuizPage(START_PAGE)
     setQuestionsData([])
   }
 
@@ -34,7 +42,8 @@ export default function ContentQuiz() {
       return
     }
     setScore(newScore)
-    setCurrentPage((oldPage) => (oldPage + 1) % 3)
+    setCurrentPage(ANS_PAGE)
+    setQuizPage(ANS_PAGE)
   }
 
   if (!questionsData) {

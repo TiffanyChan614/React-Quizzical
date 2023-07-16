@@ -1,11 +1,14 @@
 import { useContext } from 'react'
 import { AppContext } from '../../App'
+import { SCOREBOARD_PAGE, START_PAGE } from '../../utils/constants'
 
 export default function UploadForm() {
-  const { setCurrentPage, score, setScore } = useContext(AppContext)
+  const { setCurrentPage, setQuizPage, score, setScore } =
+    useContext(AppContext)
 
   function handleCancelClick() {
-    setCurrentPage((oldPage) => (oldPage + 1) % 4)
+    setCurrentPage(SCOREBOARD_PAGE)
+    setQuizPage(START_PAGE)
     setScore({
       'num-questions': 0,
       category: '',
@@ -16,7 +19,8 @@ export default function UploadForm() {
   }
 
   function handleUploadClick() {
-    setCurrentPage((oldPage) => (oldPage + 1) % 4)
+    setCurrentPage(SCOREBOARD_PAGE)
+    setQuizPage(START_PAGE)
     alert('Uploaded!')
     setScore({
       'num-questions': 0,
