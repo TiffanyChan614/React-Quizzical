@@ -1,6 +1,7 @@
 import { useState, useEffect, createContext } from 'react'
 import { START_PAGE, QUIZ_PAGE, ANS_PAGE } from './utils/helper'
 import PageLayout from './components/PageLayout/index'
+import useLocalStorage from './hooks/useLocalStorage'
 
 export const AppContext = createContext()
 
@@ -48,21 +49,26 @@ export default function App() {
     () => localStorage.getItem('theme') || 'light'
   )
 
-  useEffect(() => {
-    localStorage.setItem('currentPage', currentPage)
-  }, [currentPage])
+  useLocalStorage('currentPage', currentPage)
+  useLocalStorage('theme', theme)
+  useLocalStorage('questionsData', questionsData)
+  useLocalStorage('formData', formData)
 
-  useEffect(() => {
-    localStorage.setItem('theme', theme)
-  }, [theme])
+  // useEffect(() => {
+  //   localStorage.setItem('currentPage', currentPage)
+  // }, [currentPage])
 
-  useEffect(() => {
-    localStorage.setItem('questionsData', JSON.stringify(questionsData))
-  }, [questionsData])
+  // useEffect(() => {
+  //   localStorage.setItem('theme', theme)
+  // }, [theme])
 
-  useEffect(() => {
-    localStorage.setItem('formData', JSON.stringify(formData))
-  }, [formData])
+  // useEffect(() => {
+  //   localStorage.setItem('questionsData', JSON.stringify(questionsData))
+  // }, [questionsData])
+
+  // useEffect(() => {
+  //   localStorage.setItem('formData', JSON.stringify(formData))
+  // }, [formData])
 
   return (
     <main className={`main ${theme}`}>
