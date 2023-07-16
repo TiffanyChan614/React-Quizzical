@@ -1,7 +1,10 @@
 import { useState, useEffect, createContext } from 'react'
 import { START_PAGE, QUIZ_PAGE, ANS_PAGE } from './utils/helper'
-import PageLayout from './components/PageLayout/index'
+import PageLayout from './components/PageLayout'
+import Content from './components/Content/index'
 import useLocalStorage from './hooks/useLocalStorage'
+// import { onSnapshot } from 'firebase/firestore'
+// import { scoreboardCollection } from './utils/firebase'
 
 export const AppContext = createContext()
 
@@ -49,26 +52,23 @@ export default function App() {
     () => localStorage.getItem('theme') || 'light'
   )
 
+  const [scoreboard, setScoreboard] = useState([])
+
+  // useEffect(() => {
+  //   const unsubscribe = onSnapshot(scoreboardCollection, (snapshot) => {
+  //     const scoreboardData = snapshot.docs.map((doc) => ({
+  //       ...doc.data(),
+  //       id: doc.id,
+  //     }))
+  //     setScoreboard(scoreboardData)
+  //   })
+  //   return unsubscribe
+  // }, [])
+
   useLocalStorage('currentPage', currentPage)
   useLocalStorage('theme', theme)
   useLocalStorage('questionsData', questionsData)
   useLocalStorage('formData', formData)
-
-  // useEffect(() => {
-  //   localStorage.setItem('currentPage', currentPage)
-  // }, [currentPage])
-
-  // useEffect(() => {
-  //   localStorage.setItem('theme', theme)
-  // }, [theme])
-
-  // useEffect(() => {
-  //   localStorage.setItem('questionsData', JSON.stringify(questionsData))
-  // }, [questionsData])
-
-  // useEffect(() => {
-  //   localStorage.setItem('formData', JSON.stringify(formData))
-  // }, [formData])
 
   return (
     <main className={`main ${theme}`}>
@@ -84,11 +84,13 @@ export default function App() {
           setScore,
           theme,
           setTheme,
+          scoreboard,
+          setScoreboard,
         }}>
         <PageLayout>
-          {currentPage === START_PAGE && <PageLayout.Start />}
-          {currentPage === QUIZ_PAGE && <PageLayout.Quiz />}
-          {currentPage === ANS_PAGE && <PageLayout.Ans />}
+          {currentPage === START_PAGE && <Content.Start />}
+          {currentPage === QUIZ_PAGE && <Content.Quiz />}
+          {currentPage === ANS_PAGE && <Content.Ans />}
         </PageLayout>
       </AppContext.Provider>
     </main>
