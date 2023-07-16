@@ -1,6 +1,6 @@
 import { WiMoonAltFirstQuarter, WiMoonAltThirdQuarter } from 'react-icons/wi'
 import { useContext } from 'react'
-import { AppContext } from '../App'
+import { AppContext } from '../../App'
 
 export default function Header() {
   const { theme, setTheme } = useContext(AppContext)

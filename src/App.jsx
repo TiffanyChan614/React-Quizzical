@@ -1,6 +1,6 @@
 import { useState, useEffect, createContext } from 'react'
 import { START_PAGE, QUIZ_PAGE, ANS_PAGE } from './utils/helper'
-import PageLayout from './components/PageLayout'
+import PageLayout from './components/common/PageLayout'
 import Content from './components/Content/index'
 import useLocalStorage from './hooks/useLocalStorage'
 // import { onSnapshot } from 'firebase/firestore'

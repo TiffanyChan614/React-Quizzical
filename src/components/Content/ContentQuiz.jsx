@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useContext } from 'react'
 import { AppContext } from '../../App'
-import Question from '../Question'
+import Question from '../common/Question'
 
 export default function PageQuiz() {
   const { setCurrentPage, questionsData, setQuestionsData, setScore, theme } =

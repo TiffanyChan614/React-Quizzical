@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { AppContext } from '../../App'
-import Question from '../Question'
+import Question from '../common/Question'
 
 export default function PageAns() {
   const {
