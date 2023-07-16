@@ -52,7 +52,14 @@ export default function App() {
     }
   })
 
-  const [score, setScore] = useState(0)
+  const [score, setScore] = useState({
+    'num-questions': 0,
+    category: '',
+    difficulty: '',
+    type: '',
+    score: 0,
+  })
+
   const [theme, setTheme] = useState(
     () => localStorage.getItem('theme') || 'light'
   )

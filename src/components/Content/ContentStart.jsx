@@ -5,8 +5,14 @@ import { fetchQuestions } from '../../services/QuizService'
 import { formatQuestionsData } from '../../utils/helper'
 
 export default function ContentStart() {
-  const { setCurrentPage, formData, setFormData, setQuestionsData, theme } =
-    useContext(AppContext)
+  const {
+    setCurrentPage,
+    formData,
+    setFormData,
+    setScore,
+    setQuestionsData,
+    theme,
+  } = useContext(AppContext)
 
   function handleFormChange(event) {
     const { name, value } = event.target
@@ -23,9 +29,16 @@ export default function ContentStart() {
     if (formData['num-questions'] < 1 || formData['num-questions'] > 50) {
       alert('Please enter a number between 1 and 50')
     } else {
-      setCurrentPage((oldPage) => (oldPage + 1) % 3)
+      setCurrentPage((oldPage) => (oldPage + 1) % 4)
       const questions = await fetchQuestions(formData)
       setQuestionsData(formatQuestionsData(questions))
+      setScore({
+        'num-questions': formData['num-questions'],
+        category: formData.category,
+        difficulty: formData.difficulty,
+        type: formData.type,
+        score: 0,
+      })
       setFormData({
         'num-questions': 0,
         category: '',

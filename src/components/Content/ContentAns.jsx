@@ -1,8 +1,11 @@
-import { useContext } from 'react'
+import { useState, useContext } from 'react'
 import { AppContext } from '../../App'
 import Question from '../common/Question'
+import UploadForm from '../common/UploadForm'
+// import { addDoc } from 'firebase/firestore'
+// import { collection } from '../../utils/firebase'
 
-export default function PageAns() {
+export default function ContentAns() {
   const {
     questionsData,
     setQuestionsData,
@@ -12,10 +15,22 @@ export default function PageAns() {
     theme,
   } = useContext(AppContext)
 
+  const [showForm, setShowForm] = useState(false)
+
   function handlePlayAgainClick() {
-    setCurrentPage((oldPage) => (oldPage + 1) % 3)
+    setCurrentPage((oldPage) => (oldPage + 1) % 4)
     setQuestionsData([])
-    setScore(0)
+    setScore({
+      'num-questions': 0,
+      category: '',
+      difficulty: '',
+      type: '',
+      score: 0,
+    })
+  }
+
+  function toggleForm() {
+    setShowForm((oldShowForm) => !oldShowForm)
   }
 
   if (!questionsData) {
@@ -43,6 +58,12 @@ export default function PageAns() {
           onClick={handlePlayAgainClick}>
           Play again
         </button>
+        <button
+          className={`upload-btn ${theme}`}
+          onClick={toggleForm}>
+          Upload your score
+        </button>
+        {showForm && <UploadForm />}
       </div>
     </div>
   )

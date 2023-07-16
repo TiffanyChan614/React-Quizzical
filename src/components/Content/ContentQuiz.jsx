@@ -8,7 +8,7 @@ export default function ContentQuiz() {
     useContext(AppContext)
 
   function handleBackClick() {
-    setCurrentPage((oldPage) => (oldPage - 1) % 3)
+    setCurrentPage((oldPage) => (oldPage - 1) % 4)
     setQuestionsData([])
   }
 
