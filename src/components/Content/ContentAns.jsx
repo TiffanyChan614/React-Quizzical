@@ -2,7 +2,7 @@ import { useState, useContext } from 'react'
 import { AppContext } from '../../App'
 import Question from '../common/Question'
 import UploadForm from '../common/UploadForm'
-import { START_PAGE, SCOREBOARD_PAGE } from '../../utils/constants'
+import { START_PAGE } from '../../utils/constants'
 // import { addDoc } from 'firebase/firestore'
 // import { collection } from '../../utils/firebase'
 

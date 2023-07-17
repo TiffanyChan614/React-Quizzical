@@ -3,6 +3,13 @@ import { useContext } from 'react'
 import { AppContext } from '../../App'
 import { fetchQuestions } from '../../services/QuizService'
 import { formatQuestionsData } from '../../utils/helper'
+import {
+  INITIAL_FORM_DATA,
+  INITIAL_SCORE,
+  CATEGORIES,
+  DIFFICULTY,
+  TYPE,
+} from '../../utils/constants'
 
 export default function ContentStart() {
   const {
@@ -34,19 +41,8 @@ export default function ContentStart() {
       setQuizPage((oldPage) => (oldPage + 1) % 4)
       const questions = await fetchQuestions(formData)
       setQuestionsData(formatQuestionsData(questions))
-      setScore({
-        'num-questions': formData['num-questions'],
-        category: formData.category,
-        difficulty: formData.difficulty,
-        type: formData.type,
-        score: 0,
-      })
-      setFormData({
-        'num-questions': 0,
-        category: '',
-        difficulty: '',
-        type: '',
-      })
+      setScore({ ...INITIAL_SCORE })
+      setFormData({ ...INITIAL_FORM_DATA })
     }
   }
 
@@ -72,31 +68,15 @@ export default function ContentStart() {
           name='category'
           value={formData.category}
           onChange={handleFormChange}>
-          <option value=''>Any category</option>
-          <option value='9'>General Knowledge</option>
-          <option value='10'>Entertainment: Books</option>
-          <option value='11'>Entertainment: Film</option>
-          <option value='12'>Entertainment: Music</option>
-          <option value='13'>Entertainment: Musicals &amp; Theatres</option>
-          <option value='14'>Entertainment: Television</option>
-          <option value='15'>Entertainment: Video Games</option>
-          <option value='16'>Entertainment: Board Games</option>
-          <option value='17'>Science &amp; Nature</option>
-          <option value='18'>Science: Computers</option>
-          <option value='19'>Science: Mathematics</option>
-          <option value='20'>Mythology</option>
-          <option value='21'>Sports</option>
-          <option value='22'>Geography</option>
-          <option value='23'>History</option>
-          <option value='24'>Politics</option>
-          <option value='25'>Art</option>
-          <option value='26'>Celebrities</option>
-          <option value='27'>Animals</option>
-          <option value='28'>Vehicles</option>
-          <option value='29'>Entertainment: Comics</option>
-          <option value='30'>Science: Gadgets</option>
-          <option value='31'>Entertainment: Japanese Anime &amp; Manga</option>
-          <option value='32'>Entertainment: Cartoon &amp; Animations</option>
+          {CATEGORIES.map((category) => {
+            return (
+              <option
+                key={category.name}
+                value={category.value}>
+                {category.name}
+              </option>
+            )
+          })}
         </select>
         <label htmlFor='difficulty'>Difficulty:</label>
         <select
@@ -104,10 +84,15 @@ export default function ContentStart() {
           name='difficulty'
           value={formData.difficulty}
           onChange={handleFormChange}>
-          <option value=''>Any difficulty</option>
-          <option value='easy'>Easy</option>
-          <option value='medium'>Medium</option>
-          <option value='hard'>Hard</option>
+          {DIFFICULTY.map((difficulty) => {
+            return (
+              <option
+                key={difficulty.name}
+                value={difficulty.value}>
+                {difficulty.name}
+              </option>
+            )
+          })}
         </select>
         <label htmlFor='type'>Question type:</label>
         <select
@@ -115,9 +100,15 @@ export default function ContentStart() {
           name='type'
           value={formData.type}
           onChange={handleFormChange}>
-          <option value=''>Any type</option>
-          <option value='multiple'>Multiple choice</option>
-          <option value='boolean'>True / False</option>
+          {TYPE.map((type) => {
+            return (
+              <option
+                key={type.name}
+                value={type.value}>
+                {type.name}
+              </option>
+            )
+          })}
         </select>
         <button
           className={`start-btn ${theme}`}
