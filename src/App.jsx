@@ -57,9 +57,13 @@ export default function App() {
     ...INITIAL_SCORE,
   })
 
-  const [theme, setTheme] = useState(
-    () => localStorage.getItem('theme') || 'light'
-  )
+  const [theme, setTheme] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem('theme')) || 'light'
+    } catch {
+      return 'light'
+    }
+  })
 
   const [newlyAddedScore, setNewlyAddedScore] = useState({})
 
