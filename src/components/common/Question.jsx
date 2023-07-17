@@ -17,7 +17,9 @@ export default function Question({ question, questionId, isActive }) {
           ? {
               ...questionData,
               answers: questionData.answers.map((ans) =>
-                ans.id === ansId ? { ...ans, selected: true } : ans
+                ans.id === ansId
+                  ? { ...ans, selected: true }
+                  : { ...ans, selected: false }
               ),
             }
           : questionData
