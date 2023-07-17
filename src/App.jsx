@@ -6,7 +6,6 @@ import {
   SCOREBOARD_PAGE,
   INITIAL_FORM_DATA,
   INITIAL_SCORE,
-  INITIAL_SCOREBOARD,
 } from './utils/constants'
 import PageLayout from './components/common/PageLayout'
 import Content from './components/Content/index'
@@ -62,18 +61,7 @@ export default function App() {
     () => localStorage.getItem('theme') || 'light'
   )
 
-  const [scoreboard, setScoreboard] = useState({ ...INITIAL_SCOREBOARD })
-
-  // useEffect(() => {
-  //   const unsubscribe = onSnapshot(scoreboardCollection, (snapshot) => {
-  //     const scoreboardData = snapshot.docs.map((doc) => ({
-  //       ...doc.data(),
-  //       id: doc.id,
-  //     }))
-  //     setScoreboard(scoreboardData)
-  //   })
-  //   return unsubscribe
-  // }, [])
+  const [newlyAddedScore, setNewlyAddedScore] = useState({})
 
   useLocalStorage('currentPage', currentPage)
   useLocalStorage('quizPage', quizPage)
@@ -96,8 +84,6 @@ export default function App() {
           setScore,
           theme,
           setTheme,
-          scoreboard,
-          setScoreboard,
           quizPage,
           setQuizPage,
         }}>

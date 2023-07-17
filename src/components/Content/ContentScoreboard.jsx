@@ -5,8 +5,8 @@ import { CATEGORIES } from '../../utils/constants'
 import he from 'he'
 
 export default function ContentScoreboard() {
-  const { scoreboard, theme } = useContext(AppContext)
-  const [category, setCategory] = useState('Any Category')
+  const { theme } = useContext(AppContext)
+  const [category, setCategory] = useState({ value: '0', name: 'Any Category' })
 
   function changeCategory(e) {
     setCategory(e.target.value)
@@ -17,7 +17,8 @@ export default function ContentScoreboard() {
       <h1 className={`scoreboard--title ${theme}`}>Scoreboard</h1>
       <select
         className={`scoreboard--type ${theme}`}
-        onChange={changeCategory}>
+        onChange={changeCategory}
+        value={category}>
         {CATEGORIES.map((category) => (
           <option
             key={category.name}

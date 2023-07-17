@@ -1,12 +1,19 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { AppContext } from '../../App'
-import { SCOREBOARD_PAGE, START_PAGE } from '../../utils/constants'
+import {
+  SCOREBOARD_PAGE,
+  START_PAGE,
+  INITIAL_SCORE,
+} from '../../utils/constants'
 import { addDoc } from 'firebase/firestore'
-import { scoreboardCollection } from '../../utils/firebase'
+import { scoreCollection } from '../../utils/firebase'
+import classNames from 'classnames'
 
 export default function UploadForm() {
-  const { setCurrentPage, setQuizPage, score, setScore } =
+  const { setCurrentPage, setQuizPage, score, setScore, setNewlyAddedScore } =
     useContext(AppContext)
+
+  const [name, setName] = useState('')
 
   function handleCancelClick() {
     setCurrentPage(SCOREBOARD_PAGE)
@@ -24,13 +31,9 @@ export default function UploadForm() {
     setCurrentPage(SCOREBOARD_PAGE)
     setQuizPage(START_PAGE)
     alert('Uploaded!')
-    setScore({
-      'num-questions': 0,
-      category: '',
-      difficulty: '',
-      type: '',
-      score: 0,
-    })
+    const newScoreRef = addDoc(scoreCollection, { score })
+    setNewlyAddedScore({ id: newScoreRef.id })
+    setScore({ ...INITIAL_SCORE })
   }
 
   return (
@@ -54,6 +57,9 @@ export default function UploadForm() {
           type='text'
           id='name'
           name='name'
+          value={name}
+          placeholder='name'
+          onChange={(e) => setName(e.target.value)}
         />
         <button
           type='cancel'

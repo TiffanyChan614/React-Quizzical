@@ -19,4 +19,4 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig)
 const db = getFirestore(app)
-const scoreboardCollection = collection(db, 'notes')
+export const scoreCollection = collection(db, 'scores')
