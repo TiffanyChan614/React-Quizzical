@@ -7,8 +7,8 @@ import {
   INITIAL_FORM_DATA,
   INITIAL_SCORE,
   CATEGORIES,
-  DIFFICULTY,
-  TYPE,
+  DIFFICULTIES,
+  TYPES,
 } from '../../utils/constants'
 
 export default function ContentStart() {
@@ -84,7 +84,7 @@ export default function ContentStart() {
           name='difficulty'
           value={formData.difficulty}
           onChange={handleFormChange}>
-          {DIFFICULTY.map((difficulty) => {
+          {DIFFICULTIES.map((difficulty) => {
             return (
               <option
                 key={difficulty.name}
@@ -100,7 +100,7 @@ export default function ContentStart() {
           name='type'
           value={formData.type}
           onChange={handleFormChange}>
-          {TYPE.map((type) => {
+          {TYPES.map((type) => {
             return (
               <option
                 key={type.name}

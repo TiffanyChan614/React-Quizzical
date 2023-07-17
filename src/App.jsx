@@ -4,6 +4,8 @@ import {
   QUIZ_PAGE,
   ANS_PAGE,
   SCOREBOARD_PAGE,
+  INITIAL_FORM_DATA,
+  INITIAL_SCORE,
 } from './utils/constants'
 import PageLayout from './components/common/PageLayout'
 import Content from './components/Content/index'
@@ -43,28 +45,16 @@ export default function App() {
             ['num-questions']: Number(storedFormData['num-questions']),
             ...storedFormData,
           }
-        : {
-            'num-questions': 0,
-            category: '',
-            difficulty: '',
-            type: '',
-          }
+        : { ...INITIAL_FORM_DATA }
     } catch {
       return {
-        'num-questions': 0,
-        category: '',
-        difficulty: '',
-        type: '',
+        ...INITIAL_FORM_DATA,
       }
     }
   })
 
   const [score, setScore] = useState({
-    'num-questions': 0,
-    category: '',
-    difficulty: '',
-    type: '',
-    score: 0,
+    ...INITIAL_SCORE,
   })
 
   const [theme, setTheme] = useState(

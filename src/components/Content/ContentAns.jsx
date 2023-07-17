@@ -2,7 +2,7 @@ import { useState, useContext } from 'react'
 import { AppContext } from '../../App'
 import Question from '../common/Question'
 import UploadForm from '../common/UploadForm'
-import { START_PAGE } from '../../utils/constants'
+import { START_PAGE, INITIAL_SCORE } from '../../utils/constants'
 // import { addDoc } from 'firebase/firestore'
 // import { collection } from '../../utils/firebase'
 
@@ -23,13 +23,7 @@ export default function ContentAns() {
     setCurrentPage(START_PAGE)
     setQuizPage(START_PAGE)
     setQuestionsData([])
-    setScore({
-      'num-questions': 0,
-      category: '',
-      difficulty: '',
-      type: '',
-      score: 0,
-    })
+    setScore({ ...INITIAL_SCORE })
   }
 
   function toggleForm() {

@@ -1,9 +1,10 @@
+/* eslint-disable react-refresh/only-export-components */
 export const START_PAGE = 0,
   QUIZ_PAGE = 1,
   ANS_PAGE = 2,
   SCOREBOARD_PAGE = 3
 
-export const INITITAL_FORM_DATA = {
+export const INITIAL_FORM_DATA = {
   'num-questions': 0,
   category: '',
   difficulty: '',
@@ -122,7 +123,7 @@ export const CATEGORIES = [
   },
 ]
 
-const DIFFICULTIES = [
+export const DIFFICULTIES = [
   {
     value: '',
     name: 'Any difficulty',
@@ -141,7 +142,7 @@ const DIFFICULTIES = [
   },
 ]
 
-const TYPES = [
+export const TYPES = [
   {
     value: '',
     name: 'Any type',

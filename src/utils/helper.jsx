@@ -22,10 +22,12 @@ export function formatAnswers(incorrectAnswers, correctAnswer) {
     .map((ans) => ({ title: ans, correct: false }))
     .concat({ title: correctAnswer, correct: true })
   if (isTrueFalse(answers)) {
-    answers = answers.sort((a) => (a === 'True' ? -1 : 1))
+    answers = answers.sort((a, b) => (a.title === 'True' ? -1 : 1))
   } else {
     shuffleArray(answers)
   }
+
+  console.log(answers)
 
   return answers.map((answer, ansId) => {
     const formattedAnswer = {
