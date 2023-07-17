@@ -3,6 +3,7 @@ import { useContext } from 'react'
 import { AppContext } from '../../App'
 import Question from '../common/Question'
 import { START_PAGE, ANS_PAGE } from '../../utils/constants'
+import { calculateWeightedScore } from '../../utils/helper'
 
 export default function ContentQuiz() {
   const {
@@ -41,7 +42,16 @@ export default function ContentQuiz() {
       alert('Please answer all questions')
       return
     }
-    setScore((oldScore) => ({ ...oldScore, 'num-correct': score }))
+    setScore((oldScore) => ({
+      ...oldScore,
+      'num-correct': score,
+      weightedScore: Number(
+        calculateWeightedScore({
+          ...oldScore,
+          'num-correct': score,
+        })
+      ),
+    }))
     setCurrentPage(ANS_PAGE)
     setQuizPage(ANS_PAGE)
   }

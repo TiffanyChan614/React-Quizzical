@@ -1,3 +1,5 @@
+import { DIFFICULTIES, TYPES } from './constants'
+
 export function shuffleArray(array) {
   const shuffledArray = [...array]
   for (let i = shuffledArray.length - 1; i > 0; i--) {
@@ -45,4 +47,23 @@ export function formatQuestionsData(questions) {
     title: question.question,
     answers: formatAnswers(question.incorrectAnswers, question.correctAnswer),
   }))
+}
+
+export function calculateWeightedScore(score) {
+  const questionWeight = 0.6
+  const difficultyWeight = 0.3
+  const typeWeight = 0.1
+
+  const difficulty = DIFFICULTIES.find(
+    (difficulty) => difficulty.value === score.difficulty
+  )
+  const type = TYPES.find((type) => type.value === score.type)
+
+  const quizScore = score['num-correct'] * questionWeight
+  const difficultyScore = difficultyWeight * (difficulty.score / 2)
+  const typeScore = typeWeight * (type.score / 2)
+
+  const weightedScore = (difficultyScore + typeScore) * quizScore
+
+  return (weightedScore * 1000).toFixed(0)
 }

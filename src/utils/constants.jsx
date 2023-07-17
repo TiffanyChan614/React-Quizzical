@@ -126,18 +126,22 @@ export const DIFFICULTIES = [
   {
     value: '',
     name: 'Any difficulty',
+    score: 1,
   },
   {
     value: 'easy',
     name: 'Easy',
+    score: 0,
   },
   {
     value: 'medium',
     name: 'Medium',
+    score: 1,
   },
   {
     value: 'hard',
     name: 'Hard',
+    score: 2,
   },
 ]
 
@@ -145,13 +149,16 @@ export const TYPES = [
   {
     value: '',
     name: 'Any type',
+    score: 1,
   },
   {
     value: 'multiple',
     name: 'Multiple choice',
+    score: 2,
   },
   {
     value: 'boolean',
     name: 'True / False',
+    score: 0,
   },
 ]

@@ -46,7 +46,7 @@ export default function ContentStart() {
         console.log('setting score')
         const updatedScore = {
           ...oldScore,
-          'num-questions': formData['num-questions'],
+          'num-questions': Number(formData['num-questions']),
           category: formData.category,
           difficulty: formData.difficulty,
           type: formData.type,

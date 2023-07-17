@@ -32,7 +32,7 @@ export default function UploadForm() {
     setCurrentPage(SCOREBOARD_PAGE)
     setQuizPage(START_PAGE)
     alert('Uploaded!')
-    const newScoreRef = addDoc(scoreCollection, { score })
+    const newScoreRef = addDoc(scoreCollection, { name, score })
     setNewlyAddedScore({ id: newScoreRef.id })
     setScore({ ...INITIAL_SCORE })
   }
