@@ -5,7 +5,6 @@ import { fetchQuestions } from '../../services/QuizService'
 import { formatQuestionsData } from '../../utils/helper'
 import {
   INITIAL_FORM_DATA,
-  INITIAL_SCORE,
   CATEGORIES,
   DIFFICULTIES,
   TYPES,
@@ -42,14 +41,19 @@ export default function ContentStart() {
       setQuizPage((oldPage) => (oldPage + 1) % 4)
       const questions = await fetchQuestions(formData)
       setQuestionsData(formatQuestionsData(questions))
-      setScore((oldScore) => ({
-        ...oldScore,
-        'num-questions': formData['num-questions'],
-        category: formData.category,
-        difficulty: formData.difficulty,
-        type: formData.type,
-      }))
-      setFormData({ ...INITIAL_FORM_DATA })
+
+      setScore((oldScore) => {
+        console.log('setting score')
+        const updatedScore = {
+          ...oldScore,
+          'num-questions': formData['num-questions'],
+          category: formData.category,
+          difficulty: formData.difficulty,
+          type: formData.type,
+        }
+        setFormData({ ...INITIAL_FORM_DATA })
+        return updatedScore
+      })
     }
   }
 

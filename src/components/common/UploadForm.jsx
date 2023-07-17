@@ -5,6 +5,7 @@ import {
   START_PAGE,
   INITIAL_SCORE,
 } from '../../utils/constants'
+import { CATEGORIES, DIFFICULTIES, TYPES } from '../../utils/constants'
 import { addDoc } from 'firebase/firestore'
 import { scoreCollection } from '../../utils/firebase'
 
@@ -26,7 +27,8 @@ export default function UploadForm() {
     })
   }
 
-  function handleUploadClick() {
+  function handleUploadClick(e) {
+    e.preventDefault()
     setCurrentPage(SCOREBOARD_PAGE)
     setQuizPage(START_PAGE)
     alert('Uploaded!')
@@ -35,20 +37,28 @@ export default function UploadForm() {
     setScore({ ...INITIAL_SCORE })
   }
 
+  const selectedCategory = CATEGORIES.find(
+    (category) => category.value === score.category
+  )
+  const selectedDifficulty = DIFFICULTIES.find(
+    (difficulty) => difficulty.value === score.difficulty
+  )
+  const selectedType = TYPES.find((type) => type.value === score.type)
+
   return (
     <div className='upload-form'>
-      <form>
+      <form onSubmit={handleUploadClick}>
         <div className='statistics'>
           <h2>Your statistics</h2>
           <p>
             Your score: {score['num-correct']}/{score['num-questions']}
           </p>
 
-          <p>Category: {score.category}</p>
+          <p>Category: {selectedCategory.name}</p>
 
-          <p>Difficult: {score.difficulty}</p>
+          <p>Difficult: {selectedDifficulty.name}</p>
 
-          <p>Type: {score.type}</p>
+          <p>Type: {selectedType.name}</p>
           <p>Weighted Score: {score.weightedScore}</p>
         </div>
         <label htmlFor='name'>Enter your Name:</label>
@@ -65,11 +75,7 @@ export default function UploadForm() {
           onClick={handleCancelClick}>
           Cancel
         </button>
-        <button
-          type='submit'
-          onSubmit={handleUploadClick}>
-          Upload
-        </button>
+        <button type='submit'>Upload</button>
       </form>
     </div>
   )

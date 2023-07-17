@@ -86,6 +86,8 @@ export default function App() {
           setTheme,
           quizPage,
           setQuizPage,
+          newlyAddedScore,
+          setNewlyAddedScore,
         }}>
         <PageLayout>
           {currentPage === START_PAGE && <Content.Start />}

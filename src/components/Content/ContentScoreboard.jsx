@@ -6,7 +6,7 @@ import he from 'he'
 
 export default function ContentScoreboard() {
   const { theme } = useContext(AppContext)
-  const [category, setCategory] = useState({ value: '0', name: 'Any Category' })
+  const [category, setCategory] = useState('')
 
   function changeCategory(e) {
     setCategory(e.target.value)
@@ -22,10 +22,8 @@ export default function ContentScoreboard() {
         {CATEGORIES.map((category) => (
           <option
             key={category.name}
-            value={category.value ? category.value : '0'}>
-            {`${he.decode(category.name)} ${
-              category.value ? category.value : 0
-            }`}
+            value={category.value}>
+            {he.decode(category.name)}
           </option>
         ))}
       </select>
