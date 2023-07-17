@@ -6,6 +6,7 @@ import {
   SCOREBOARD_PAGE,
   INITIAL_FORM_DATA,
   INITIAL_SCORE,
+  INITIAL_SCOREBOARD,
 } from './utils/constants'
 import PageLayout from './components/common/PageLayout'
 import Content from './components/Content/index'
@@ -61,7 +62,7 @@ export default function App() {
     () => localStorage.getItem('theme') || 'light'
   )
 
-  const [scoreboard, setScoreboard] = useState(null)
+  const [scoreboard, setScoreboard] = useState({ ...INITIAL_SCOREBOARD })
 
   // useEffect(() => {
   //   const unsubscribe = onSnapshot(scoreboardCollection, (snapshot) => {

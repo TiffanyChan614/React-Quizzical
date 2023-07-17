@@ -1,6 +1,8 @@
 import { useContext } from 'react'
 import { AppContext } from '../../App'
 import { SCOREBOARD_PAGE, START_PAGE } from '../../utils/constants'
+import { addDoc } from 'firebase/firestore'
+import { scoreboardCollection } from '../../utils/firebase'
 
 export default function UploadForm() {
   const { setCurrentPage, setQuizPage, score, setScore } =
@@ -34,13 +36,8 @@ export default function UploadForm() {
   return (
     <div className='upload-form'>
       <form>
-        <label htmlFor='name'>Your Name:</label>
-        <input
-          type='text'
-          id='name'
-          name='name'
-        />
-        <div>
+        <div className='statistics'>
+          <h2>Your statistics</h2>
           <p>
             Your score: {score.score}/{score['num-questions']}
           </p>
@@ -50,12 +47,14 @@ export default function UploadForm() {
           <p>Difficult: {score.difficulty}</p>
 
           <p>Type: {score.type}</p>
-          <p>
-            The scoreboard is ranked by: percentage {`>`} difficulty {`>`} type{' '}
-            {`>`} number of questions
-          </p>
-          <p>Wanna stay at the top? Answer MORE DIFFICULT MC questions!</p>
+          <p>Weighted Score: {score.weightedScore}</p>
         </div>
+        <label htmlFor='name'>Enter your Name:</label>
+        <input
+          type='text'
+          id='name'
+          name='name'
+        />
         <button
           type='cancel'
           onClick={handleCancelClick}>

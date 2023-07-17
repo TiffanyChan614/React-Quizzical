@@ -21,7 +21,7 @@ export default function ContentQuiz() {
   }
 
   function handleCheckAnswersClick() {
-    let newScore = 0
+    let score = 0
     let allAnswered = true
     questionsData.forEach((question) => {
       let answered = false
@@ -30,7 +30,7 @@ export default function ContentQuiz() {
           answered = true
         }
         if (ans.selected && ans.correct) {
-          newScore++
+          score++
         }
       })
       if (!answered) {
@@ -41,7 +41,7 @@ export default function ContentQuiz() {
       alert('Please answer all questions')
       return
     }
-    setScore(newScore)
+    setScore((oldScore) => ({ ...oldScore, 'num-correct': score }))
     setCurrentPage(ANS_PAGE)
     setQuizPage(ANS_PAGE)
   }

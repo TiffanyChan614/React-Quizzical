@@ -21,28 +21,30 @@ export default function ContentScoreboard() {
         {CATEGORIES.map((category) => (
           <option
             key={category.name}
-            value={category.value}>
-            {he.decode(category.name)}
+            value={category.value ? category.value : '0'}>
+            {`${he.decode(category.name)} ${
+              category.value ? category.value : 0
+            }`}
           </option>
         ))}
       </select>
-      {scoreboard && scoreboard[category]?.length > 0 ? (
+      {/* {scoreboard && scoreboard[category]?.length > 0 ? (
         <div className='scoreboard--records'>
-          {/* {scoreboard[category].map((record) => (
+          {scoreboard[category].map((record) => (
             <ScoreRecord
               key={record.id}
               rank={record.rank}
               username={record.username}
               score={record.score}
             />
-          ))} */}
+          ))}
         </div>
       ) : (
         <div>
           <h2>No records.</h2>
           <p>Take another quiz and update your score!</p>
         </div>
-      )}
+      )} */}
     </div>
   )
 }

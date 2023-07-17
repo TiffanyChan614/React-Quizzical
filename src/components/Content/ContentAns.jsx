@@ -3,8 +3,6 @@ import { AppContext } from '../../App'
 import Question from '../common/Question'
 import UploadForm from '../common/UploadForm'
 import { START_PAGE, INITIAL_SCORE } from '../../utils/constants'
-// import { addDoc } from 'firebase/firestore'
-// import { collection } from '../../utils/firebase'
 
 export default function ContentAns() {
   const {
@@ -48,7 +46,8 @@ export default function ContentAns() {
       </div>
       <div className='ans--buttons'>
         <p className='score'>
-          You scored {score}/{questionsData.length} correct answers
+          You scored {score['num-correct']}/{score['num-questions']} correct
+          answers
         </p>
         <button
           className={`play-again-btn ${theme}`}
