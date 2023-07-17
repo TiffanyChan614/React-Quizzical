@@ -1,4 +1,9 @@
-import { DIFFICULTIES, TYPES } from './constants'
+import {
+  DIFFICULTIES,
+  TYPES,
+  MAX_DIFFICULTY_SCORE,
+  MAX_TYPE_SCORE,
+} from './constants'
 
 export function shuffleArray(array) {
   const shuffledArray = [...array]
@@ -63,8 +68,9 @@ export function calculateWeightedScore(score) {
   const type = TYPES.find((type) => type.value === score.type)
 
   const quizScore = score['num-correct'] * questionWeight
-  const difficultyScore = difficultyWeight * (difficulty.score / 2)
-  const typeScore = typeWeight * (type.score / 2)
+  const difficultyScore =
+    difficultyWeight * (difficulty.score / MAX_DIFFICULTY_SCORE)
+  const typeScore = typeWeight * (type.score / MAX_TYPE_SCORE)
 
   const weightedScore = (difficultyScore + typeScore) * quizScore
 

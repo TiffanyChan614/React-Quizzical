@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 export const START_PAGE = 0,
   QUIZ_PAGE = 1,
   ANS_PAGE = 2,
@@ -162,3 +163,6 @@ export const TYPES = [
     score: 0,
   },
 ]
+
+export const MAX_DIFFICULTY_SCORE = 2
+export const MAX_TYPE_SCORE = 2

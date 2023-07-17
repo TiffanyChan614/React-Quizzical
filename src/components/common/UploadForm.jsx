@@ -7,7 +7,7 @@ import {
 } from '../../utils/constants'
 import { CATEGORIES, DIFFICULTIES, TYPES } from '../../utils/constants'
 import { addDoc } from 'firebase/firestore'
-import { scoreCollection } from '../../utils/firebase'
+import { scoreCollection } from '../../services/firebase'
 
 export default function UploadForm() {
   const { setCurrentPage, setQuizPage, score, setScore, setNewlyAddedScore } =

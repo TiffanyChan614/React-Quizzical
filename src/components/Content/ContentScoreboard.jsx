@@ -1,12 +1,24 @@
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { AppContext } from '../../App'
 import ScoreRecord from '../common/ScoreRecord'
 import { CATEGORIES } from '../../utils/constants'
+import { fetchScoresByCategory } from '../../services/scoreService'
 import he from 'he'
 
 export default function ContentScoreboard() {
   const { theme } = useContext(AppContext)
   const [category, setCategory] = useState('')
+  const [scoreboard, setScoreboard] = useState(null)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const scores = await fetchScoresByCategory(category)
+      setScoreboard(scores)
+    }
+    fetchData()
+  }, [category])
+
+  console.log(scoreboard)
 
   function changeCategory(e) {
     setCategory(e.target.value)
