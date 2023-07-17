@@ -7,7 +7,6 @@ import {
 } from '../../utils/constants'
 import { addDoc } from 'firebase/firestore'
 import { scoreCollection } from '../../utils/firebase'
-import classNames from 'classnames'
 
 export default function UploadForm() {
   const { setCurrentPage, setQuizPage, score, setScore, setNewlyAddedScore } =
@@ -42,7 +41,7 @@ export default function UploadForm() {
         <div className='statistics'>
           <h2>Your statistics</h2>
           <p>
-            Your score: {score.score}/{score['num-questions']}
+            Your score: {score['num-correct']}/{score['num-questions']}
           </p>
 
           <p>Category: {score.category}</p>
@@ -68,7 +67,7 @@ export default function UploadForm() {
         </button>
         <button
           type='submit'
-          onClick={handleUploadClick}>
+          onSubmit={handleUploadClick}>
           Upload
         </button>
       </form>

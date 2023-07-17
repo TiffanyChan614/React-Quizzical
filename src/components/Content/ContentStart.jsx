@@ -42,7 +42,13 @@ export default function ContentStart() {
       setQuizPage((oldPage) => (oldPage + 1) % 4)
       const questions = await fetchQuestions(formData)
       setQuestionsData(formatQuestionsData(questions))
-      setScore({ ...INITIAL_SCORE })
+      setScore((oldScore) => ({
+        ...oldScore,
+        'num-questions': formData['num-questions'],
+        category: formData.category,
+        difficulty: formData.difficulty,
+        type: formData.type,
+      }))
       setFormData({ ...INITIAL_FORM_DATA })
     }
   }
