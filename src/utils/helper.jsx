@@ -27,8 +27,6 @@ export function formatAnswers(incorrectAnswers, correctAnswer) {
     shuffleArray(answers)
   }
 
-  console.log(answers)
-
   return answers.map((answer, ansId) => {
     const formattedAnswer = {
       id: ansId,

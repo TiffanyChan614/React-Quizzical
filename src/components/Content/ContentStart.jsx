@@ -10,6 +10,7 @@ import {
   DIFFICULTIES,
   TYPES,
 } from '../../utils/constants'
+import he from 'he'
 
 export default function ContentStart() {
   const {
@@ -73,7 +74,7 @@ export default function ContentStart() {
               <option
                 key={category.name}
                 value={category.value}>
-                {category.name}
+                {he.decode(category.name)}
               </option>
             )
           })}

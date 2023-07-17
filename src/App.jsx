@@ -61,7 +61,7 @@ export default function App() {
     () => localStorage.getItem('theme') || 'light'
   )
 
-  const [scoreboard, setScoreboard] = useState([])
+  const [scoreboard, setScoreboard] = useState(null)
 
   // useEffect(() => {
   //   const unsubscribe = onSnapshot(scoreboardCollection, (snapshot) => {
