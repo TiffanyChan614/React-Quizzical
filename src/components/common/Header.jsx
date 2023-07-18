@@ -4,7 +4,8 @@ import { AppContext } from '../../App'
 import { SCOREBOARD_PAGE } from '../../utils/constants'
 
 export default function Header() {
-  const { setCurrentPage, quizPage, theme, setTheme } = useContext(AppContext)
+  const { currentPage, setCurrentPage, quizPage, theme, setTheme } =
+    useContext(AppContext)
 
   function toggleTheme() {
     setTimeout(
@@ -35,16 +36,20 @@ export default function Header() {
         <div className='theme-desc'>{theme === 'light' ? 'Light' : 'Dark'}</div>
       </div>
       <div className='page-nav'>
-        <button
-          className={`page-nav--btn ${theme}`}
+        <div
+          className={`page-nav--div ${
+            currentPage < SCOREBOARD_PAGE ? 'selected' : ''
+          } ${theme}`}
           onClick={goToQuiz}>
           Quiz
-        </button>
-        <button
-          className={`page-nav--btn ${theme}`}
+        </div>
+        <div
+          className={`page-nav--div ${
+            currentPage < SCOREBOARD_PAGE ? '' : 'selected'
+          } ${theme}`}
           onClick={goToScoreboard}>
           Scoreboard
-        </button>
+        </div>
       </div>
     </header>
   )

@@ -1,8 +1,10 @@
 import { useContext, useState } from 'react'
 import { AppContext } from '../../App'
+import { AnsContext } from '../Content/ContentAns'
 import {
   SCOREBOARD_PAGE,
   START_PAGE,
+  ANS_PAGE,
   INITIAL_SCORE,
 } from '../../utils/constants'
 import { CATEGORIES, DIFFICULTIES, TYPES } from '../../utils/constants'
@@ -13,18 +15,13 @@ export default function UploadForm() {
   const { setCurrentPage, setQuizPage, score, setScore, setNewlyAddedScore } =
     useContext(AppContext)
 
+  const { toggleForm } = useContext(AnsContext)
+
   const [name, setName] = useState('')
 
   function handleCancelClick() {
-    setCurrentPage(SCOREBOARD_PAGE)
-    setQuizPage(START_PAGE)
-    setScore({
-      'num-questions': 0,
-      category: '',
-      difficulty: '',
-      type: '',
-      score: 0,
-    })
+    setCurrentPage(ANS_PAGE)
+    toggleForm()
   }
 
   function handleUploadClick(e) {
@@ -48,34 +45,56 @@ export default function UploadForm() {
   return (
     <div className='upload-form'>
       <form onSubmit={handleUploadClick}>
+        <h2>Your statistics</h2>
         <div className='statistics'>
-          <h2>Your statistics</h2>
           <p>
-            Your score: {score['num-correct']}/{score['num-questions']}
+            <span className='statistics--field'>Your score:</span>{' '}
+            {score['num-correct']}/{score['num-questions']}
           </p>
 
-          <p>Category: {selectedCategory.name}</p>
+          <p>
+            <span className='statistics--field'>Category:</span>{' '}
+            {selectedCategory.name}
+          </p>
 
-          <p>Difficult: {selectedDifficulty.name}</p>
+          <p>
+            <span className='statistics--field'>Difficult:</span>{' '}
+            {selectedDifficulty.name}
+          </p>
 
-          <p>Type: {selectedType.name}</p>
-          <p>Weighted Score: {score.weightedScore}</p>
+          <p>
+            <span className='statistics--field'>Type:</span> {selectedType.name}
+          </p>
+          <p>
+            <span className='statistics--field'>Weighted Score:</span>{' '}
+            {score.weightedScore}
+          </p>
         </div>
-        <label htmlFor='name'>Enter your Name:</label>
-        <input
-          type='text'
-          id='name'
-          name='name'
-          value={name}
-          placeholder='name'
-          onChange={(e) => setName(e.target.value)}
-        />
-        <button
-          type='cancel'
-          onClick={handleCancelClick}>
-          Cancel
-        </button>
-        <button type='submit'>Upload</button>
+        <div className='name-input'>
+          {' '}
+          <label htmlFor='name'>Enter your Name</label>
+          <input
+            type='text'
+            id='name'
+            name='name'
+            value={name}
+            placeholder='name'
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+        <div className='upload-buttons'>
+          <button
+            type='button'
+            className='cancel-btn'
+            onClick={handleCancelClick}>
+            Cancel
+          </button>
+          <button
+            type='submit'
+            className='submit-btn'>
+            Upload
+          </button>
+        </div>
       </form>
     </div>
   )
