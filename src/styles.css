@@ -493,12 +493,22 @@ button:active:not(.back-btn) {
   color: var(--color-background);
 }
 
+.scoreboard {
+  padding-top: 10px;
+}
+
 .scoreboard--records {
   border-radius: 8px;
-  width: 340px;
+  max-width: 400px;
+  width: 95%;
   display: flex;
   flex-direction: column;
   gap: 7px;
+}
+
+.scoreboard--type {
+  max-width: 400px;
+  width: 95%;
 }
 
 .scoreboard--record {
@@ -592,9 +602,6 @@ button:active:not(.back-btn) {
   }
   .scoreboard > h1 {
     font-size: 1.5rem;
-  }
-  .scoreboard {
-    font-size: 0.9rem;
   }
 }
 
