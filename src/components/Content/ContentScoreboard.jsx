@@ -7,7 +7,7 @@ import he from 'he'
 
 export default function ContentScoreboard() {
   const { theme } = useContext(AppContext)
-  const [category, setCategory] = useState('')
+  const [category, setCategory] = useState('0')
   const [scoreboard, setScoreboard] = useState(null)
 
   useEffect(() => {
@@ -17,8 +17,6 @@ export default function ContentScoreboard() {
     }
     fetchData()
   }, [category])
-
-  console.log(scoreboard)
 
   function changeCategory(e) {
     setCategory(e.target.value)
@@ -31,22 +29,24 @@ export default function ContentScoreboard() {
         className={`scoreboard--type ${theme}`}
         onChange={changeCategory}
         value={category}>
-        {CATEGORIES.map((category) => (
-          <option
-            key={category.name}
-            value={category.value}>
-            {he.decode(category.name)}
-          </option>
-        ))}
+        {[{ value: '0', name: 'Overall' }]
+          .concat(CATEGORIES)
+          .map((category) => (
+            <option
+              key={category.name}
+              value={category.value}>
+              {he.decode(category.name)}
+            </option>
+          ))}
       </select>
-      {/* {scoreboard && scoreboard[category]?.length > 0 ? (
+      {scoreboard && scoreboard?.length > 0 ? (
         <div className='scoreboard--records'>
-          {scoreboard[category].map((record) => (
+          {scoreboard.map((record) => (
             <ScoreRecord
               key={record.id}
               rank={record.rank}
-              username={record.username}
-              score={record.score}
+              username={record.name}
+              score={record.weightedScore}
             />
           ))}
         </div>
@@ -55,7 +55,7 @@ export default function ContentScoreboard() {
           <h2>No records.</h2>
           <p>Take another quiz and update your score!</p>
         </div>
-      )} */}
+      )}
     </div>
   )
 }

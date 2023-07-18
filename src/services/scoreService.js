@@ -1,15 +1,17 @@
-import { collection, query, where, orderBy, getDocs } from 'firebase/firestore'
+import { query, where, orderBy, getDocs } from 'firebase/firestore'
 import { scoreCollection } from './firebase'
 
 export async function fetchScoresByCategory(category) {
-  console.log('scoreCollection', scoreCollection)
   console.log('category', category)
 
-  const scoresQuery = query(
-    scoreCollection,
-    orderBy('score.weightedScore', 'desc'),
-    where('score.category', '==', category)
-  )
+  const scoresQuery =
+    category === '0'
+      ? query(scoreCollection, orderBy('score.weightedScore', 'desc'))
+      : query(
+          scoreCollection,
+          orderBy('score.weightedScore', 'desc'),
+          where('score.category', '==', category)
+        )
   console.log('scoresQuery', scoresQuery)
 
   const querySnapshot = await getDocs(scoresQuery)

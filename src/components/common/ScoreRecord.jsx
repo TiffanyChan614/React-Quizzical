@@ -2,9 +2,9 @@
 export default function ScoreRecord({ rank, username, score }) {
   return (
     <div className='scoreboard--record'>
-      <span className='scoreboard--record--rank'>{rank}</span>
-      <span className='scoreboard--record--username'>{username}</span>
-      <span className='scoreboard--record--score'>{score}</span>
+      <div className='scoreboard--record--rank'>{rank}</div>
+      <div className='scoreboard--record--username'>{username}</div>
+      <div className='scoreboard--record--score'>{score}</div>
     </div>
   )
 }
