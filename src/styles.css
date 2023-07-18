@@ -313,7 +313,8 @@ button:active:not(.back-btn) {
 
 .form.dark > input,
 .form.dark > select,
-.scoreboard--type.dark {
+.scoreboard--type.dark,
+.name-input.dark > input {
   border: 1px solid var(--color-border-dark);
   background-color: var(--color-primary-dark);
   color: var(--color-text-dark);
@@ -439,7 +440,7 @@ button:active:not(.back-btn) {
   border: none;
 }
 
-.upload-form {
+.upload-form-container {
   position: fixed;
   top: 0;
   left: 0;
@@ -451,7 +452,7 @@ button:active:not(.back-btn) {
   align-items: center;
 }
 
-.upload-form > form {
+.upload-form-container > form {
   background-color: var(--color-background);
   text-align: center;
   padding: 20px 25px;
@@ -488,6 +489,10 @@ button:active:not(.back-btn) {
   gap: 10px;
 }
 
+.dark h1 {
+  color: var(--color-background);
+}
+
 .scoreboard--records {
   border-radius: 8px;
   width: 340px;
@@ -518,7 +523,7 @@ button:active:not(.back-btn) {
 }
 
 .scoreboard--record.dark:first-child {
-  background-color: var(--color-secondary);
+  background-color: var(--color-background);
   color: var(--color-text);
   border: none;
 }
@@ -539,6 +544,14 @@ button:active:not(.back-btn) {
   display: flex;
   flex-direction: column;
   gap: 5px;
+}
+
+.upload-form-container.dark {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.upload-form-container.dark > form {
+  background-color: var(--color-background-dark);
 }
 
 @media only screen and (max-width: 480px) {

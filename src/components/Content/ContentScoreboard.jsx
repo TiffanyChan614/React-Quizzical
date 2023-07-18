@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from 'react'
 import { AppContext } from '../../App'
-import ScoreRecord from '../common/ScoreRecord'
+import ScoreRecord from '../ScoreRecord'
 import { CATEGORIES } from '../../utils/constants'
 import { fetchScoresByCategory } from '../../services/scoreService'
 import he from 'he'

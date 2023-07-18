@@ -1,11 +1,9 @@
 /* eslint-disable react/prop-types */
-import { AppContext } from '../../App'
+import { AppContext } from '../App'
 import { useContext } from 'react'
 
 export default function ScoreRecord({ id, rank, username, score }) {
   const { theme, newlyAddedScore } = useContext(AppContext)
-  console.log('newlyAddedScore', newlyAddedScore)
-  console.log('id', id)
   return (
     <div
       className={`scoreboard--record ${theme} ${

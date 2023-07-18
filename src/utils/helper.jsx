@@ -17,8 +17,6 @@ export function shuffleArray(array) {
 }
 
 export function isTrueFalse(ans) {
-  console.log('in isTrueFalse')
-  console.log(ans)
   return (
     ans.length === 2 &&
     ((ans[0].title === 'True' && ans[1].title === 'False') ||
@@ -32,7 +30,6 @@ export function formatAnswers(incorrectAnswers, correctAnswer) {
     .concat({ title: correctAnswer, correct: true })
   if (isTrueFalse(answers)) {
     answers = answers.sort((a, b) => (a.title === 'True' ? -1 : 1))
-    console.log(answers)
   } else {
     shuffleArray(answers)
   }

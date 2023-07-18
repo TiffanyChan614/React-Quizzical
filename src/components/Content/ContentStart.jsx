@@ -43,7 +43,6 @@ export default function ContentStart() {
       setQuestionsData(formatQuestionsData(questions))
 
       setScore((oldScore) => {
-        console.log('setting score')
         const updatedScore = {
           ...oldScore,
           'num-questions': Number(formData['num-questions']),

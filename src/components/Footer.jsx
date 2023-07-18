@@ -6,7 +6,7 @@ import {
 } from 'react-icons/ai'
 
 import { useContext } from 'react'
-import { AppContext } from '../../App'
+import { AppContext } from '../App'
 
 export default function Footer() {
   const { theme } = useContext(AppContext)

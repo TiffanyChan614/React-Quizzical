@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import he from 'he'
 import { useContext } from 'react'
-import { AppContext } from '../../App'
+import { AppContext } from '../App'
 
 export default function Question({ question, questionId, isActive }) {
   const { setQuestionsData, theme } = useContext(AppContext)

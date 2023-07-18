@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useContext } from 'react'
 import { AppContext } from '../../App'
-import Question from '../common/Question'
+import Question from '../Question'
 import { START_PAGE, ANS_PAGE } from '../../utils/constants'
 import { calculateWeightedScore } from '../../utils/helper'
 

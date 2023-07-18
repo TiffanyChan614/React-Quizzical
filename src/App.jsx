@@ -7,7 +7,7 @@ import {
   INITIAL_FORM_DATA,
   INITIAL_SCORE,
 } from './utils/constants'
-import PageLayout from './components/common/PageLayout'
+import PageLayout from './components/PageLayout'
 import Content from './components/Content/index'
 import useLocalStorage from './hooks/useLocalStorage'
 

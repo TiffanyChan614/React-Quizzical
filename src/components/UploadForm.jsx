@@ -1,19 +1,25 @@
 import { useContext, useState } from 'react'
-import { AppContext } from '../../App'
-import { AnsContext } from '../Content/ContentAns'
+import { AppContext } from '../App'
+import { AnsContext } from './Content/ContentAns'
 import {
   SCOREBOARD_PAGE,
   START_PAGE,
   ANS_PAGE,
   INITIAL_SCORE,
-} from '../../utils/constants'
-import { CATEGORIES, DIFFICULTIES, TYPES } from '../../utils/constants'
+} from '../utils/constants'
+import { CATEGORIES, DIFFICULTIES, TYPES } from '../utils/constants'
 import { addDoc } from 'firebase/firestore'
-import { scoreCollection } from '../../services/firebase'
+import { scoreCollection } from '../services/firebase'
 
 export default function UploadForm() {
-  const { setCurrentPage, setQuizPage, score, setScore, setNewlyAddedScore } =
-    useContext(AppContext)
+  const {
+    setCurrentPage,
+    setQuizPage,
+    score,
+    setScore,
+    setNewlyAddedScore,
+    theme,
+  } = useContext(AppContext)
 
   const { toggleForm } = useContext(AnsContext)
 
@@ -42,7 +48,7 @@ export default function UploadForm() {
   const selectedType = TYPES.find((type) => type.value === score.type)
 
   return (
-    <div className='upload-form'>
+    <div className={`upload-form-container ${theme}`}>
       <form onSubmit={handleUploadClick}>
         <h2>Your statistics</h2>
         <div className='statistics'>
@@ -69,7 +75,7 @@ export default function UploadForm() {
             {score.weightedScore}
           </p>
         </div>
-        <div className='name-input'>
+        <div className={`name-input ${theme}`}>
           {' '}
           <label htmlFor='name'>Enter your Name</label>
           <input
@@ -84,13 +90,13 @@ export default function UploadForm() {
         <div className='upload-buttons'>
           <button
             type='button'
-            className='cancel-btn'
+            className={`cancel-btn ${theme}`}
             onClick={handleCancelClick}>
             Cancel
           </button>
           <button
             type='submit'
-            className='submit-btn'>
+            className={`submit-btn ${theme}`}>
             Upload
           </button>
         </div>

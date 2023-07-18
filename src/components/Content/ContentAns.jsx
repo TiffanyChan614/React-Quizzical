@@ -1,7 +1,7 @@
 import { useState, useContext, createContext } from 'react'
 import { AppContext } from '../../App'
-import Question from '../common/Question'
-import UploadForm from '../common/UploadForm'
+import Question from '../Question'
+import UploadForm from '../UploadForm'
 import { START_PAGE, INITIAL_SCORE } from '../../utils/constants'
 
 export const AnsContext = createContext()
