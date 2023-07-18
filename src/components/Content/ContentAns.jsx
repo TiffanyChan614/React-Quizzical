@@ -47,22 +47,27 @@ export default function ContentAns() {
             />
           ))}
         </div>
-        <div className='ans--buttons'>
-          <p className='score'>
-            You scored {score['num-correct']}/{score['num-questions']} correct
-            answers
-          </p>
-          <button
-            className={`play-again-btn ${theme}`}
-            onClick={handlePlayAgainClick}>
-            Play again
-          </button>
-          <button
-            className={`upload-btn ${theme}`}
-            onClick={toggleForm}>
-            Upload your score
-          </button>
-          {showForm && <UploadForm />}
+        <div className='ans--action'>
+          <div className='ans--result'>
+            <p>
+              You scored {score['num-correct']}/{score['num-questions']} correct
+              answers
+            </p>
+            <p>Your weighted score is {score.weightedScore}</p>
+          </div>
+          <div className='ans--buttons'>
+            <button
+              className={`play-again-btn ${theme}`}
+              onClick={handlePlayAgainClick}>
+              Play again
+            </button>
+            <button
+              className={`upload-btn ${theme}`}
+              onClick={toggleForm}>
+              Upload your score
+            </button>
+            {showForm && <UploadForm />}
+          </div>
         </div>
       </div>
     </AnsContext.Provider>

@@ -51,9 +51,9 @@ export default function ContentScoreboard() {
           ))}
         </div>
       ) : (
-        <div>
-          <h2>No records.</h2>
-          <p>Take another quiz and update your score!</p>
+        <div className='scoreboard--no-records'>
+          <h2>No records</h2>
+          <p>Take addDoc quiz and update your score!</p>
         </div>
       )}
     </div>
