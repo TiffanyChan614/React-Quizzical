@@ -19,12 +19,23 @@ export async function fetchScoresByCategory(category) {
   const querySnapshot = await getDocs(scoresQuery)
 
   const scores = []
+  let rank = 0
+  let prevScore = 0
   querySnapshot.docs.map((doc, index) => {
     const {
       name,
       score: { weightedScore },
     } = doc.data()
-    const rank = index + 1
+
+    if (index === 0) {
+      prevScore = weightedScore
+      rank++
+    } else {
+      if (prevScore !== weightedScore) {
+        rank++
+        prevScore = weightedScore
+      }
+    }
     scores.push({ id: doc.id, name, weightedScore, rank })
   })
 

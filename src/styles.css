@@ -506,7 +506,7 @@ button:active:not(.back-btn) {
   border-radius: 8px;
 }
 
-.scoreboard--record:first-child {
+.scoreboard--record:first-child:not(.highlight) {
   background-color: var(--color-primary);
   color: white;
 }
