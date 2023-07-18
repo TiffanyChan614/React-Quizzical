@@ -24,13 +24,12 @@ export default function UploadForm() {
     toggleForm()
   }
 
-  function handleUploadClick(e) {
+  async function handleUploadClick(e) {
     e.preventDefault()
     setCurrentPage(SCOREBOARD_PAGE)
     setQuizPage(START_PAGE)
-    alert('Uploaded!')
-    const newScoreRef = addDoc(scoreCollection, { name, score })
-    setNewlyAddedScore({ id: newScoreRef.id })
+    const newScoreRef = await addDoc(scoreCollection, { name, score })
+    setNewlyAddedScore(newScoreRef.id)
     setScore({ ...INITIAL_SCORE })
   }
 

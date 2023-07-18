@@ -44,6 +44,7 @@ export default function ContentScoreboard() {
           {scoreboard.map((record) => (
             <ScoreRecord
               key={record.id}
+              id={record.id}
               rank={record.rank}
               username={record.name}
               score={record.weightedScore}

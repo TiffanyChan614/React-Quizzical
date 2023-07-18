@@ -523,6 +523,16 @@ button:active:not(.back-btn) {
   border: none;
 }
 
+.scoreboard--record.highlight {
+  background-color: var(--color-accent);
+}
+
+.scoreboard--record.highlight.dark {
+  background-color: var(--color-accent-dark);
+  color: var(--color-text);
+  border: none;
+}
+
 .scoreboard--no-records {
   margin-top: 15px;
   text-align: center;
