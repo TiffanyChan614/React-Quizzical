@@ -10,8 +10,6 @@ import {
 import PageLayout from './components/common/PageLayout'
 import Content from './components/Content/index'
 import useLocalStorage from './hooks/useLocalStorage'
-// import { onSnapshot } from 'firebase/firestore'
-// import { scoreboardCollection } from './utils/firebase'
 
 export const AppContext = createContext()
 
