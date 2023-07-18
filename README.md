@@ -92,9 +92,8 @@ This project also has the following development dependencies:
 - [x] Light/dark mode
 - [x] Progress preserves when the user refreshes the page
 - [x] Add a footer with links to my social media
-- [ ] Add French and Chinese translations
-- [ ] Store user's history of quiz results in Firebase
-- [ ] Add a leaderboard to display the top 10 scores
+- [x] Add a leaderboard to display the top 25 scores
+- [ ] Highlight questions unanswered by the user in the quiz page
 
 ## Usage
 
@@ -117,3 +116,5 @@ This project also has the following development dependencies:
 - Fetching data from an API
 - Handling state and side effects in React
 - Using context and compound components in React
+- Using custom hooks in React
+- Storing and Retrieving data with queries from firebase
