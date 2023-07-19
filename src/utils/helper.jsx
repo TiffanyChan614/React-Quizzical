@@ -55,9 +55,9 @@ export function formatQuestionsData(questions) {
 }
 
 export function calculateWeightedScore(score) {
-  const questionWeight = 0.6
-  const difficultyWeight = 0.3
-  const typeWeight = 0.1
+  const questionWeight = 0.7
+  const difficultyWeight = 0.25
+  const typeWeight = 0.05
 
   const difficulty = DIFFICULTIES.find(
     (difficulty) => difficulty.value === score.difficulty
@@ -69,7 +69,7 @@ export function calculateWeightedScore(score) {
     difficultyWeight * (difficulty.score / MAX_DIFFICULTY_SCORE) * 10
   const typeScore = typeWeight * (type.score / MAX_TYPE_SCORE) * 10
 
-  const weightedScore = (difficultyScore + typeScore) * quizScore * 10
+  const weightedScore = (difficultyScore + typeScore) * quizScore * 100
 
   return weightedScore.toFixed(0)
 }
