@@ -110,13 +110,15 @@ This project also has the following development dependencies:
 
 ## Usage
 
-1. When you first load the application, you will see the start page with the title "Quizzical" and a prompt asking if you are ready to test your brain.
-   Enter your configuration and click the "Start quiz" button to begin the quiz.
+1. When you first load the application, you will see the start page with the title "Quizzical" and a prompt asking if you are ready to test your brain. Enter your configuration and click the "Start quiz" button to begin the quiz.
 2. The application will fetch a set of trivia questions from the API and display them one by one on the quiz page.
 3. For each question, choose the answer you think is correct by clicking on the corresponding button.
 4. Once you have answered all the questions, click the "Check answers" button to see your score.
 5. The answer page will display the questions again with the correct answers highlighted and your score out of the total number of questions.
 6. To play again, click the "Play again" button.
+7. To upload your score to the scoreboard, click the "Upload score" button and enter your name in the prompt.
+8. To navigate between quiz and scoreboard, click the "Quiz" and "Scoreboard" buttons in the navigation bar.
+9. To switch between light and dark mode, click theme logo in the navigation bar.
 
 ## API
 
