@@ -21,7 +21,7 @@
 
 ### Description
 
-This is the final solo project of the [React course by Bob Ziroll on Scrimba](https://scrimba.com/learn/learnreact). The code is all written by me without any guidance. The project is a quiz app that fetches trivia questions from the [Open Trivia Database API](https://opentdb.com/) and score players based on their answers.
+This is the final solo project of the [React course by Bob Ziroll on Scrimba](https://scrimba.com/learn/learnreact). The code is all written by me without any guidance. The project is a quiz app that fetches trivia questions from the [Open Trivia Database API](https://opentdb.com/) and score players based on their answers. I have extended the app to include features like allowing the user to configure the quiz, adding a leaderboard, and adding a dark mode.
 
 ### Live Demo
 
@@ -45,11 +45,31 @@ You can try the page [here](https://quizzical987.netlify.app).
 - React JS
 - Figma
 
-### Local Setup
+### Run Locally
 
-- Clone the repository
-- Run `npm install` to install the dependencies
-- Run `npm dev` to start the development server
+Clone the project
+
+```bash
+  git clone https://link-to-project
+```
+
+Go to the project directory
+
+```bash
+  cd my-project
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run start
+```
 
 ### Dependencies
 
@@ -93,6 +113,7 @@ This project also has the following development dependencies:
 - [x] Progress preserves when the user refreshes the page
 - [x] Add a footer with links to my social media
 - [x] Add a leaderboard to display the top 25 scores
+- [x] Responsive design
 - [ ] Highlight questions unanswered by the user in the quiz page
 
 ## Usage
@@ -118,3 +139,7 @@ This project also has the following development dependencies:
 - Using context and compound components in React
 - Using custom hooks in React
 - Storing and Retrieving data with queries from firebase
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
