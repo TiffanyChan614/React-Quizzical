@@ -50,7 +50,7 @@ You can try the page [here](https://quizzical987.netlify.app).
 Clone the project
 
 ```bash
-  git clone https://link-to-project
+  git clone https://github.com/TiffanyChan614/React-Quizzical.git
 ```
 
 Go to the project directory
