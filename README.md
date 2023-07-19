@@ -27,14 +27,6 @@ This is the final solo project of the [React course by Bob Ziroll on Scrimba](ht
 
 You can try the page [here](https://quizzical987.netlify.app).
 
-### Screenshots
-
-![Start Page](./screenshots/startPage.png)
-
-![Quiz Page](./screenshots/quizPage.png)
-
-![Answer Page](./screenshots/ansPage.png)
-
 ## Getting Started
 
 ### Built with
