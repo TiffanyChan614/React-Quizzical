@@ -35,7 +35,7 @@ export default function Header() {
         </div>
         <div className='theme-desc'>{theme === 'light' ? 'Light' : 'Dark'}</div>
       </div>
-      <div className='page-nav'>
+      <nav className='page-nav'>
         <div
           className={`page-nav--div ${
             currentPage < SCOREBOARD_PAGE ? 'selected' : ''
@@ -50,7 +50,7 @@ export default function Header() {
           onClick={goToScoreboard}>
           Scoreboard
         </div>
-      </div>
+      </nav>
     </header>
   )
 }
