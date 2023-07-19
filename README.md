@@ -36,6 +36,7 @@ You can try the page [here](https://quizzical987.netlify.app).
 - JavaScript
 - React JS
 - Figma
+- Firebase
 
 ### Run Locally
 
