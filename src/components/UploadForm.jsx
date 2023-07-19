@@ -10,6 +10,7 @@ import {
 import { CATEGORIES, DIFFICULTIES, TYPES } from '../utils/constants'
 import { addDoc } from 'firebase/firestore'
 import { scoreCollection } from '../services/firebase'
+import he from 'he'
 
 export default function UploadForm() {
   const {
@@ -59,7 +60,7 @@ export default function UploadForm() {
 
           <p>
             <span className='statistics--field'>Category:</span>{' '}
-            {selectedCategory.name}
+            {he.decode(selectedCategory.name)}
           </p>
 
           <p>

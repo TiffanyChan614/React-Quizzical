@@ -66,10 +66,10 @@ export function calculateWeightedScore(score) {
 
   const quizScore = score['num-correct'] * questionWeight
   const difficultyScore =
-    difficultyWeight * (difficulty.score / MAX_DIFFICULTY_SCORE)
-  const typeScore = typeWeight * (type.score / MAX_TYPE_SCORE)
+    difficultyWeight * (difficulty.score / MAX_DIFFICULTY_SCORE) * 10
+  const typeScore = typeWeight * (type.score / MAX_TYPE_SCORE) * 10
 
-  const weightedScore = (difficultyScore + typeScore) * quizScore
+  const weightedScore = (difficultyScore + typeScore) * quizScore * 10
 
-  return (weightedScore * 1000).toFixed(0)
+  return weightedScore.toFixed(0)
 }
