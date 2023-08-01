@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { AppContext } from '../../App'
 import Question from '../Question'
 import { START_PAGE, ANS_PAGE } from '../../utils/constants'
@@ -14,6 +14,7 @@ export default function ContentQuiz() {
     setScore,
     theme,
   } = useContext(AppContext)
+  const [attemptedCheck, setAttemptedCheck] = useState(false)
 
   function handleBackClick() {
     setCurrentPage(START_PAGE)
@@ -22,6 +23,7 @@ export default function ContentQuiz() {
   }
 
   function handleCheckAnswersClick() {
+    setAttemptedCheck(true)
     let score = 0
     let allAnswered = true
     questionsData.forEach((question) => {
@@ -69,6 +71,7 @@ export default function ContentQuiz() {
             key={question.id}
             questionId={question.id}
             isActive={true}
+            attemptedCheck={attemptedCheck}
           />
         ))}
       </div>

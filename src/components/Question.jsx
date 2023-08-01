@@ -3,8 +3,14 @@ import he from 'he'
 import { useContext } from 'react'
 import { AppContext } from '../App'
 
-export default function Question({ question, questionId, isActive }) {
+export default function Question({
+  question,
+  questionId,
+  isActive,
+  attemptedCheck,
+}) {
   const { setQuestionsData, theme } = useContext(AppContext)
+  const isUnanswered = !question.answers.some((ans) => ans.selected)
 
   if (!question) {
     return null
@@ -28,7 +34,10 @@ export default function Question({ question, questionId, isActive }) {
   }
 
   return (
-    <div className='quiz-question'>
+    <div
+      className={`quiz-question ${
+        isUnanswered && attemptedCheck ? 'unanswered' : ''
+      } ${theme}`}>
       <h2 className='quiz-question--question'>{he.decode(question.title)}</h2>
       <div className='quiz-question--answers'>
         {question.answers.map((ans) => (
