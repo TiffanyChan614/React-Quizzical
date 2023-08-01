@@ -54,7 +54,7 @@ export default function UploadForm() {
         <h2>Your statistics</h2>
         <div className='statistics'>
           <p>
-            <span className='statistics--field'>Your score:</span>{' '}
+            <span className='statistics--field'>Your Score:</span>{' '}
             {score['num-correct']}/{score['num-questions']}
           </p>
 
@@ -64,7 +64,7 @@ export default function UploadForm() {
           </p>
 
           <p>
-            <span className='statistics--field'>Difficult:</span>{' '}
+            <span className='statistics--field'>Difficulty:</span>{' '}
             {selectedDifficulty.name}
           </p>
 

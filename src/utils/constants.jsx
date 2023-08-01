@@ -23,7 +23,7 @@ export const INITIAL_SCORE = {
 export const CATEGORIES = [
   {
     value: '',
-    name: 'Any Category',
+    name: 'Any category',
   },
   {
     value: '9',
