@@ -4,6 +4,7 @@ import { AppContext } from '../../App'
 import Question from '../Question'
 import { START_PAGE, ANS_PAGE } from '../../utils/constants'
 import { calculateWeightedScore } from '../../utils/helper'
+import { FaAngleUp } from 'react-icons/fa'
 
 export default function ContentQuiz() {
   const {
@@ -58,6 +59,13 @@ export default function ContentQuiz() {
     setQuizPage(ANS_PAGE)
   }
 
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    })
+  }
+
   if (!questionsData) {
     return null
   }
@@ -85,6 +93,11 @@ export default function ContentQuiz() {
           className={`check-btn ${theme}`}
           onClick={handleCheckAnswersClick}>
           Check answers
+        </button>
+        <button
+          className={`scroll-top-btn ${theme}`}
+          onClick={scrollToTop}>
+          <FaAngleUp />
         </button>
       </div>
     </div>

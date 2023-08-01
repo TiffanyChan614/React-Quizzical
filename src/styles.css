@@ -572,6 +572,15 @@ button:active:not(.back-btn) {
   color: rgb(231, 108, 108);
 }
 
+button.scroll-top-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 2;
+  background-color: var(--color-answer);
+  border-radius: 25%;
+}
+
 @media only screen and (max-width: 480px) {
   .content {
     font-size: 0.9rem;
