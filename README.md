@@ -107,7 +107,8 @@ This project also has the following development dependencies:
 - [x] Add a footer with links to my social media
 - [x] Add a leaderboard to display the top 25 scores
 - [x] Responsive design
-- [ ] Highlight questions unanswered by the user in the quiz page
+- [x] Highlight questions unanswered by the user in the quiz page
+- [x] Button to scroll to the top of the page on the quiz page
 
 ## Usage
 
