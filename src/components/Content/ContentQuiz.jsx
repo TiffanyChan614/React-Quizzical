@@ -73,15 +73,22 @@ export default function ContentQuiz() {
   return (
     <div className='quiz content'>
       <div className='quiz--questions'>
-        {questionsData.map((question) => (
-          <Question
-            question={question}
-            key={question.id}
-            questionId={question.id}
-            isActive={true}
-            attemptedCheck={attemptedCheck}
-          />
-        ))}
+        {questionsData.length > 0 ? (
+          questionsData.map((question) => (
+            <Question
+              question={question}
+              key={question.id}
+              questionId={question.id}
+              isActive={true}
+              attemptedCheck={attemptedCheck}
+            />
+          ))
+        ) : (
+          <div className='no-questions-msg'>
+            We don't have that many questions for this category. Please try
+            again with a different category or with fewer questions.
+          </div>
+        )}
       </div>
       <div className={`quiz--buttons ${theme}`}>
         <button
@@ -89,11 +96,13 @@ export default function ContentQuiz() {
           onClick={handleBackClick}>
           Back
         </button>
-        <button
-          className={`check-btn ${theme}`}
-          onClick={handleCheckAnswersClick}>
-          Check answers
-        </button>
+        {questionsData.length > 0 && (
+          <button
+            className={`check-btn ${theme}`}
+            onClick={handleCheckAnswersClick}>
+            Check answers
+          </button>
+        )}
         <button
           className={`scroll-top-btn ${theme}`}
           onClick={scrollToTop}>
