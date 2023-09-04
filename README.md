@@ -23,6 +23,16 @@
 
 This is the final solo project of the [React course by Bob Ziroll on Scrimba](https://scrimba.com/learn/learnreact). The code is all written by me without any guidance. The project is a quiz app that fetches trivia questions from the [Open Trivia Database API](https://opentdb.com/) and score players based on their answers. I have extended the app to include features like allowing the user to configure the quiz, adding a leaderboard, and adding a dark mode.
 
+### Screenshots
+![Start Page in light mode](./screenshots/light-start.png)
+![Start Page in dark mode](./screenshots/dark-start.png)
+![Quiz Page in light mode](./screenshots/light-question.png)
+![Quiz Page in dark mode](./screenshots/dark-question.png)
+![Answer Page in light mode](./screenshots/light-check.png)
+![Answer Page in dark mode](./screenshots/dark-check.png)
+![Scoreboard Page in light mode](./screenshots/light-scoreboard.png)
+![Scoreboard Page in dark mode](./screenshots/dark-scoreboard.png)
+
 ### Live Demo
 
 You can try the page [here](https://quizzical987.netlify.app).
