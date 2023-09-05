@@ -115,7 +115,8 @@ This project also has the following development dependencies:
 - [x] Light/dark mode
 - [x] Progress preserves when the user refreshes the page
 - [x] Add a footer with links to my social media
-- [x] Add a leaderboard to display the top 25 scores
+- [x] Allow user to upload their score (caclulated based on the number of correct answers, questions answered, and difficulty) to a scoreboard
+- [x] Add a scoreboard to display the top 25 scores
 - [x] Responsive design
 - [x] Highlight questions unanswered by the user in the quiz page
 - [x] Button to scroll to the top of the page on the quiz page
